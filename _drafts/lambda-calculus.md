@@ -5,6 +5,30 @@ title:  "Lambda Calculus"
 date:   2015-05-20 22:12:31
 ---
 
+<!-- LaTeX macros -->
+$$
+\newcommand{\alt}{\ \mid\ }
+\newcommand{\lalt}{\ \ \ \alt}
+\newcommand{\mtt}[1]{\mathit{#1}}
+\newcommand{\To}{\Rightarrow}
+\newcommand{\tr}{\;\mtt{true}}
+\newcommand{\hyp}[1][]{\Gamma{#1} \vdash}
+\newcommand{\spacer}{\vspace{.1in}}
+\newcommand{\spacerr}{\vspace{.2in}}
+\newcommand{\anywhere}[1]{\mbox{#1}}
+\newcommand{\kw}[1]{\anywhere{\sffamily{\bfseries\small {#1}}}}
+\newcommand{\kw}[1]{\mathbf{#1}}
+\newcommand{\lam}[2][x]{\lambda #1 \,.\, #2}
+\newcommand{\fst}{\kw{fst}}
+\newcommand{\snd}{\kw{snd}}
+\newcommand{\inl}{\kw{inl}}
+\newcommand{\inr}{\kw{inr}}
+\newcommand{\case}[3]{\kw{case\ }#1\kw{\ of\ }\inl\, x \To #2 \alt \inr\, x \To #3}
+$$
+
+* TOC
+{:toc}
+
 # Background on Computability
 
 The history of computability stretches back a long ways, but we’ll start
@@ -167,13 +191,13 @@ it only has functions, nothing else. The syntax of $\lambda$-calculus
 expressions is:
 
 $$\begin{aligned}
-  e \in {\ensuremath{\mathit{Exp}}} &::= x & \text{variables}
+  e \in {\mathit{Exp}} &::= x & \text{variables}
   \\
-  &{\ \ \ {\ \mid\ }}{\ensuremath{\lambda x \,.\, e}} & \text{function abstraction}
+  &{\ \ \ {\ \mid\ }}{\lambda x \,.\, e} & \text{function abstraction}
   \\
   &{\ \ \ {\ \mid\ }}e_1 \; e_2 & \text{function application}\end{aligned}$$
 
-Note that we use ${\ensuremath{\lambda x \,.\, e}}$ to define functions
+Note that we use ${\lambda x \,.\, e}$ to define functions
 instead of $x
 \mapsto e$; they mean the same thing. Why do we use $\lambda$? The
 (possibly apocryphal) story goes that Church wanted to use the notation
@@ -183,17 +207,17 @@ $\hat{\;}$ symbol and so used $\lambda$ instead.
 
 ## Example Expressions
 
--   <span>$\lambda f \,.\, {\ensuremath{\lambda x \,.\, x}}$</span>
+-   <span>$\lambda f \,.\, {\lambda x \,.\, x}$</span>
 
--   <span>$\lambda f \,.\, {\ensuremath{\lambda x \,.\, f \; x}}$</span>
+-   <span>$\lambda f \,.\, {\lambda x \,.\, f \; x}$</span>
 
--   <span>$\lambda f \,.\, {\ensuremath{\lambda x \,.\, f \; (f \; x)}}$</span>
+-   <span>$\lambda f \,.\, {\lambda x \,.\, f \; (f \; x)}$</span>
 
--   <span>$\lambda u \,.\, {\ensuremath{\lambda f \,.\, {\ensuremath{\lambda x \,.\, f \; ((u \; f) \; x)}}}}$</span>
+-   <span>$\lambda u \,.\, {\lambda f \,.\, {\lambda x \,.\, f \; ((u \; f) \; x)}}$</span>
 
 Often we’ll use the shorthand notation <span>$\lambda xy \,.\, e$</span>
 to stand for
-<span>$\lambda x \,.\, {\ensuremath{\lambda y \,.\, e}}$</span>; using
+<span>$\lambda x \,.\, {\lambda y \,.\, e}$</span>; using
 that convention the expressions would look like this:
 
 -   <span>$\lambda fx \,.\, x$</span>
@@ -219,11 +243,11 @@ variable (which will always be a leaf node). Here are some examples:
 
 ### AST for <span>$\lambda fx \,.\, f \; (f \; x)$</span>
 
-]]]]
+**Todo**
 
 ### AST for <span>$\lambda ufx \,.\, f \; ((u \; f) \; x)$</span>
 
-] [x]]]]]]
+**Todo**
 
 # Semantics of $\lambda$-Calculus
 
@@ -241,14 +265,17 @@ just the function itself, but also the environment that existed when the
 function was defined. These two things together, the function and its
 environment, is called a *closure*. Consider the following expression:
 
-$$\begin{gathered}
-  ({\ensuremath{\lambda x \,.\, ({\ensuremath{\lambda f \,.\, ({\ensuremath{\lambda x \,.\, f \; 0}}) \; 2)}} \; {\ensuremath{\lambda a \,.\, x}})}} \; 1\end{gathered}$$
+$$
+\begin{gathered}
+  ({\lambda x \,.\, ({\lambda f \,.\, ({\lambda x \,.\, f \; 0}) \; 2)} \; {\lambda a \,.\, x})} \; 1
+\end{gathered}
+$$
 
-]] [2]]] [$\lambda a$ [$x$]] ] ] [1] ]
+**Todo**
 
 Each time we call a function (the ’@’ nodes in the AST) we push a new
 mapping onto the environment: first $x \mapsto 1$, then $f \mapsto
-{\ensuremath{\lambda a \,.\, x}}$, and finally $x \mapsto 2$. Now
+{\lambda a \,.\, x}$, and finally $x \mapsto 2$. Now
 consider what happens when we evaluate the function call $f \; 0$. We
 know that $f$ is the function <span>$\lambda a \,.\, x$</span>, i.e.,
 the function that returns the value of $x$ no matter what argument we
@@ -258,9 +285,9 @@ current environment when we evaluate the function call maps $x$ to 2
 instead. The only way to remember what the value of $x$ was when we
 defined the function is to save the environment along with the function,
 i.e., a closure. Thus the environment should have $f \mapsto
-({\ensuremath{\lambda a \,.\, x}}, [x \mapsto 1])$ instead of just
+({\lambda a \,.\, x}, [x \mapsto 1])$ instead of just
 $f \mapsto
-{\ensuremath{\lambda a \,.\, x}}$. Then when we evaluate the call
+{\lambda a \,.\, x}$. Then when we evaluate the call
 $f \; 0$, we look up $f$ in the environment to get the closure and
 evaluate the closure’s function using the closure’s environment, *not*
 the current environment.
@@ -274,19 +301,24 @@ numbers, arithmetic, etc) and then building them directly into the
 language as a convenience. We’ll end up with the following extended
 version of the $\lambda$-calculus:
 
-$$\begin{gathered}
-  x \in {\ensuremath{\mathit{Variable}}}
+$$
+\begin{gathered}
+  x \in {\mathit{Variable}}
   \qquad
   n \in \mathbb{N}
   \qquad
-  b \in {\ensuremath{\mathit{Bool}}}\end{gathered}$$
-
-$$\begin{aligned}
-  e \in {\ensuremath{\mathit{Exp}}} &::= n {\ \mid\ }b {\ \mid\ }x {\ \mid\ }{\ensuremath{\lambda x \,.\, e}} {\ \mid\ }e_1\; e_2 
+  b \in {\mathit{Bool}}
+\end{gathered}
+$$
+$$
+\begin{aligned}
+  e \in \mtt{Exp} &::= n \alt b \alt x \alt \lam{e} \alt e_1\; e_2 
   \\
-  &{\ \ \ {\ \mid\ }}(e_1, e_2) {\ \mid\ }{{{\ensuremath{\mbox{\sffamily{\bfseries\small {fst}}}}}}}(e) {\ \mid\ }{{{\ensuremath{\mbox{\sffamily{\bfseries\small {snd}}}}}}}(e)
+  &\lalt (e_1, e_2) \alt \fst(e) \alt \snd(e)
   \\
-  &{\ \ \ {\ \mid\ }}{{{\ensuremath{\mbox{\sffamily{\bfseries\small {inl}}}}}}}(e) {\ \mid\ }{{{\ensuremath{\mbox{\sffamily{\bfseries\small {inr}}}}}}}(e) {\ \mid\ }{{{\ensuremath{\mbox{\sffamily{\bfseries\small {case }}}}}}e_1{{\ensuremath{\mbox{\sffamily{\bfseries\small { of }}}}}}{{{\ensuremath{\mbox{\sffamily{\bfseries\small {inl}}}}}}}\, x {\ensuremath{\Rightarrow}}e_2 {\ \mid\ }{{{\ensuremath{\mbox{\sffamily{\bfseries\small {inr}}}}}}}\, x {\ensuremath{\Rightarrow}}e_3}\end{aligned}$$
+  &\lalt \inl(e) \alt \inr(e) \alt \case{e_1}{e_2}{e_3}
+\end{aligned}
+$$
 
 Where $(e_1, e_2)$ builds a pair of values;
 ${{{\ensuremath{\mbox{\sffamily{\bfseries\small {fst}}}}}}}(e)$ takes a
