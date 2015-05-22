@@ -1,0 +1,14 @@
+.referenceNumber, .footnote, .reversefootnote {
+  color: #cc3333;
+  text-decoration: none;
+}
+
+.footnote, .referenceNumber {
+   vertical-align: baseline;
+   position: relative;
+   top: -0.4em;
+}
+
+.footnote {
+  font-size: small;
+}
