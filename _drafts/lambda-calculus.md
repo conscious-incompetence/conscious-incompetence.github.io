@@ -1,5 +1,6 @@
 ---
 layout: post
+author: "Ben Hardekopf"
 title:  "Lambda calculus"
 date:   2015-05-20 22:12:31
 ---
