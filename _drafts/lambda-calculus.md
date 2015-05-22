@@ -320,20 +320,14 @@ $$
 \end{aligned}
 $$
 
-Where $(e_1, e_2)$ builds a pair of values;
-${{{\ensuremath{\mbox{\sffamily{\bfseries\small {fst}}}}}}}(e)$ takes a
-pair and extracts the first value;
-${{{\ensuremath{\mbox{\sffamily{\bfseries\small {snd}}}}}}}(e)$ takes a
-pair and extracts the second value;
-${{{\ensuremath{\mbox{\sffamily{\bfseries\small {inl}}}}}}}(e)$ injects
-a value into the left side of a union;
-${{{\ensuremath{\mbox{\sffamily{\bfseries\small {inr}}}}}}}(e)$ injects
-a value into the right side of a union; and
-${{{\ensuremath{\mbox{\sffamily{\bfseries\small {case }}}}}}e_1{{\ensuremath{\mbox{\sffamily{\bfseries\small { of }}}}}}{{{\ensuremath{\mbox{\sffamily{\bfseries\small {inl}}}}}}}\, x {\ensuremath{\Rightarrow}}e_2 {\ \mid\ }{{{\ensuremath{\mbox{\sffamily{\bfseries\small {inr}}}}}}}\, x {\ensuremath{\Rightarrow}}e_3}$
-pattern-matches on $e_1$ (which should be a union), evaluating $e_2$ if
-the union is on the left side and $e_3$ if it’s on the right side. We’ll
-also assume that the language has builtin functions on numbers and
-booleans $+, -, \times,
+Where $(e_1, e_2)$ builds a pair of values; $\fst(e)$ takes
+a pair and extracts the first value; $\snd(e)$ takes a pair and
+extracts the second value; $\inl(e)$ injects a value into the left
+side of a union; $\inr(e)$ injects a value into the right side of a
+union; and $\case{e_1}{e_2}{e_3}$ pattern-matches on $e_1$ (which
+should be a union), evaluating $e_2$ if the union is on the left side
+and $e_3$ if it's on the right side. We'll also assume that the
+language has builtin functions on numbers and booleans $+, -, \times,
 \div, =, <, \land, \lor, \neg$.
 
 ## Arithmetic
@@ -342,10 +336,13 @@ We can encode the natural numbers using $\lambda$-calculus in a number
 of ways, but here is a very simple way that lends itself to defining
 arithmetic:
 
-$$\begin{aligned}
-  0 \in \mathbb{N} &\equiv {\ensuremath{\lambda sz \,.\, z}}
+$$
+\begin{aligned}
+   0 \in \mathbb{N} &\equiv \lam[sz]{z}
   \\
-  n \in \mathbb{N} &\equiv {\ensuremath{\lambda sz \,.\, s^n\;z}}\end{aligned}$$
+  n \in \mathbb{N} &\equiv \lam[sz]{s^n\;z}
+\end{aligned}
+$$
 
 Where $s^n \; z$ means to apply function $s$ to $z$ a total of $n$
 times, e.g., $s^3 \; z = s \; (s \; (s \; z))$. In this encoding, 0 is a
@@ -354,23 +351,23 @@ natural number $n$ is the function that takes two arguments and applies
 the first one to the second one $n$ times. We can then define arithmetic
 on natural numbers as follows:
 
-$$\begin{aligned}
-  {{\ensuremath{\mbox{\sffamily{\bfseries\small {succ}}}}}} &\equiv {\ensuremath{\lambda nsz \,.\, s \; (n \; s \; z)}}
+$$
+\begin{aligned}
+  \kw{succ} &\equiv \lam[nsz]{s \; (n \; s \; z)}
   \\
-  {{\ensuremath{\mbox{\sffamily{\bfseries\small {add}}}}}} &\equiv {\ensuremath{\lambda mn \,.\, m \; {{\ensuremath{\mbox{\sffamily{\bfseries\small {succ}}}}}} \; n}}
+  \kw{add} &\equiv \lam[mn]{m \; \kw{succ} \; n}
   \\
-  {{\ensuremath{\mbox{\sffamily{\bfseries\small {mul}}}}}} &\equiv {\ensuremath{\lambda mn \,.\, m \; ({{\ensuremath{\mbox{\sffamily{\bfseries\small {add}}}}}} \; n) \; 0}}\end{aligned}$$
+  \kw{mul} &\equiv \lam[mn]{m \; (\kw{add} \; n) \; 0}
+\end{aligned}
+$$
 
-The successor function
-<span><span>$\mbox{\sffamily{\bfseries\small {succ}}}$</span></span>
-takes a number and adds 1 to it. The addition function
-<span><span>$\mbox{\sffamily{\bfseries\small {add}}}$</span></span>
-takes two numbers and returns the sum. The multiplication function
-<span><span>$\mbox{\sffamily{\bfseries\small {mul}}}$</span></span>
-takes two numbers and returns the product. These definitions work as we
-would expect arithmetic to work because of the way that we have encoded
-numbers as functions. We could encode subtraction, division, integers,
-and more in a similar way.
+The successor function $\kw{succ}$ takes a number and adds 1
+to it. The addition function $\kw{add}$ takes two numbers and returns
+the sum. The multiplication function $\kw{mul}$ takes two numbers and
+returns the product. These definitions work as we would expect
+arithmetic to work because of the way that we have encoded numbers as
+functions. We could encode subtraction, division, integers, and more
+in a similar way.
 
 Historical sidenote: The successor, addition, and multiplication
 functions were simple to encode, but not all encodings are as obvious.
@@ -385,24 +382,28 @@ and figured out the solution.
 
 Booleans are simple to encode:
 
-$$\begin{aligned}
-  {{\ensuremath{\mbox{\sffamily{\bfseries\small {true}}}}}} &\equiv {\ensuremath{\lambda tf \,.\, t}}
+$$
+\begin{aligned}
+  \kw{true} &\equiv \lam[tf]{t}
   \\
-  {{\ensuremath{\mbox{\sffamily{\bfseries\small {false}}}}}} &\equiv {\ensuremath{\lambda tf \,.\, f}}\end{aligned}$$
+  \kw{false} &\equiv \lam[tf]{f}
+\end{aligned}
+$$
 
-The value
-<span><span>$\mbox{\sffamily{\bfseries\small {true}}}$</span></span> is
-a function that takes two arguments and returns the first one; the value
-<span><span>$\mbox{\sffamily{\bfseries\small {false}}}$</span></span> is
-a function that takes two arguments and returns the second one. We can
-use these encodings to define the standard boolean operators:
+The value $\kw{true}$ is a function that takes two arguments
+and returns the first one; the value $\kw{false}$ is a function that
+takes two arguments and returns the second one. We can use these
+encodings to define the standard boolean operators:
 
-$$\begin{aligned}
-  {{\ensuremath{\mbox{\sffamily{\bfseries\small {and}}}}}} &\equiv {\ensuremath{\lambda ab \,.\, a \; b \; {{\ensuremath{\mbox{\sffamily{\bfseries\small {false}}}}}}}}
+$$
+\begin{aligned}
+  \kw{and} &\equiv \lam[ab]{a \; b \; \kw{false}}
   \\
-  {{\ensuremath{\mbox{\sffamily{\bfseries\small {or}}}}}} &\equiv {\ensuremath{\lambda ab \,.\, a \; {{\ensuremath{\mbox{\sffamily{\bfseries\small {true}}}}}} \; b}}
+  \kw{or} &\equiv \lam[ab]{a \; \kw{true} \; b}
   \\
-  {{\ensuremath{\mbox{\sffamily{\bfseries\small {not}}}}}} &\equiv {\ensuremath{\lambda a \,.\, a \; {{\ensuremath{\mbox{\sffamily{\bfseries\small {false}}}}}} \; {{\ensuremath{\mbox{\sffamily{\bfseries\small {true}}}}}}}}\end{aligned}$$
+  \kw{not} &\equiv \lam[a]{a \; \kw{false} \; \kw{true}}
+\end{aligned}
+$$
 
 ## Pairs
 
@@ -410,105 +411,81 @@ So far we’ve encoded primitive values (numbers and booleans) and
 operations on those primitive values. Now we’ll show how to encode data
 structures, specifically pairs of values:
 
-$$\begin{aligned}
-  {{\ensuremath{\mbox{\sffamily{\bfseries\small {pair}}}}}} &\equiv {\ensuremath{\lambda xyb \,.\, b \; x \; y}}
+$$
+\begin{aligned}
+  \kw{pair} &\equiv \lam[xyb]{b \; x \; y}
   \\
-  {{\ensuremath{\mbox{\sffamily{\bfseries\small {fst}}}}}} &\equiv {\ensuremath{\lambda p \,.\, p \; {{\ensuremath{\mbox{\sffamily{\bfseries\small {true}}}}}}}}
+  \kw{fst} &\equiv \lam[p]{p \; \kw{true}}
   \\
-  {{\ensuremath{\mbox{\sffamily{\bfseries\small {snd}}}}}} &\equiv {\ensuremath{\lambda p \,.\, p \; {{\ensuremath{\mbox{\sffamily{\bfseries\small {false}}}}}}}}\end{aligned}$$
+  \kw{snd} &\equiv \lam[p]{p \; \kw{false}}
+\end{aligned}
+$$
 
-The pair constructor is a nested function definition that takes three
-arguments. Giving it two arguments (the values to store in the pair)
-results in a function that takes a single argument and applies it to the
-original two arguments (i.e., $x$ and $y$). The
-<span><span>$\mbox{\sffamily{\bfseries\small {fst}}}$</span></span>
-function takes a pair as an argument and applies it to the function
-<span><span>$\mbox{\sffamily{\bfseries\small {true}}}$</span></span>,
-while the
-<span><span>$\mbox{\sffamily{\bfseries\small {snd}}}$</span></span>
-function does the same except applies it to
-<span><span>$\mbox{\sffamily{\bfseries\small {false}}}$</span></span>.
-Recall that
-<span><span>$\mbox{\sffamily{\bfseries\small {true}}}$</span></span> is
-a function that takes two arguments and returns the first one, while
-<span><span>$\mbox{\sffamily{\bfseries\small {false}}}$</span></span> is
-a function that takes two arguments and returns the second. Thus,
-<span><span>$\mbox{\sffamily{\bfseries\small {fst}}}$</span></span> will
-return the first value given to
-<span><span>$\mbox{\sffamily{\bfseries\small {pair}}}$</span></span>
-while
-<span><span>$\mbox{\sffamily{\bfseries\small {snd}}}$</span></span> will
-return the second value given to
-<span><span>$\mbox{\sffamily{\bfseries\small {pair}}}$</span></span>.
+The pair constructor is a nested function definition that takes three arguments.
+Giving it two arguments (the values to store in the pair) results in a function
+that takes a single argument and applies it to the original two arguments (i.e.,
+$x$ and $y$). The $\kw{fst}$ function takes a pair as an argument and applies it
+to the function $\kw{true}$, while the $\kw{snd}$ function does the same except
+applies it to $\kw{false}$. Recall that $\kw{true}$ is a function that takes two
+arguments and returns the first one, while $\kw{false}$ is a function that takes
+two arguments and returns the second. Thus, $\kw{fst}$ will return the first
+value given to $\kw{pair}$ while $\kw{snd}$ will return the second value given
+to $\kw{pair}$.
 
 ## Unions
 
-The second data structure we’ll encode is unions of two values. A union
-is a value that is tagged as being either a *left* value or a *right*
-value; what “left” and “right” mean is up to how the programmer
-interprets them. For example, we could return a union value as the
-result of a function where a “left” value means the function had an
-error and the value is an error message, while a “right” value means the
-function operated correctly and the value is the function’s result. We
-create a “left” value using the
-<span><span>$\mbox{\sffamily{\bfseries\small {inl}}}$</span></span>
-(inject left) function, and a “right” value using the
-<span><span>$\mbox{\sffamily{\bfseries\small {inr}}}$</span></span>
-(inject right) function. Think of
-<span><span>$\mbox{\sffamily{\bfseries\small {inl}}}$</span></span> and
-<span><span>$\mbox{\sffamily{\bfseries\small {inr}}}$</span></span> as
-creating a pair where the first element is
-<span><span>$\mbox{\sffamily{\bfseries\small {true}}}$</span></span> or
-<span><span>$\mbox{\sffamily{\bfseries\small {false}}}$</span></span>
-(meaning left or right) and the second element is the actual value:
+The second data structure we'll encode is unions of two values. A
+union is a value that is tagged as being either a *left* value
+or a *right* value; what “left” and “right” mean is up to
+how the programmer interprets them. For example, we could return a
+union value as the result of a function where a “left” value means
+the function had an error and the value is an error message, while a
+“right” value means the function operated correctly and the value is
+the function's result. We create a “left” value using the $\kw{inl}$
+(inject left) function, and a “right” value using the $\kw{inr}$
+(inject right) function. Think of $\kw{inl}$ and $\kw{inr}$ as creating a
+pair where the first element is $\kw{true}$ or $\kw{false}$ (meaning left
+or right) and the second element is the actual value:
 
-$$\begin{aligned}
-  {{\ensuremath{\mbox{\sffamily{\bfseries\small {inl}}}}}}(e) &\equiv ({{\ensuremath{\mbox{\sffamily{\bfseries\small {true}}}}}}, e)
+$$
+\begin{aligned}
+  \kw{inl}(e) &\equiv (\kw{true}, e)
   \\
-  {{\ensuremath{\mbox{\sffamily{\bfseries\small {inr}}}}}}(e) &\equiv ({{\ensuremath{\mbox{\sffamily{\bfseries\small {false}}}}}}, e)\end{aligned}$$
+  \kw{inr}(e) &\equiv (\kw{false}, e)
+\end{aligned}
+$$
 
 We can pattern-match on unions to determine whether they are “left” or
-“right” values based on how they are tagged; the
-<span><span>$\mbox{\sffamily{\bfseries\small {case}}}$</span></span>
+“right” values based on how they are tagged; the $\kw{case}$
 statement takes a union value and two cases: one is an expression to
 evaluate if the union is a “left” value, the other is an expression to
 evaluate if the union is a “right” value:
 
-$$\begin{gathered}
-  {{{\ensuremath{\mbox{\sffamily{\bfseries\small {case }}}}}}e_1{{\ensuremath{\mbox{\sffamily{\bfseries\small { of }}}}}}{{{\ensuremath{\mbox{\sffamily{\bfseries\small {inl}}}}}}}\, x {\ensuremath{\Rightarrow}}e_2 {\ \mid\ }{{{\ensuremath{\mbox{\sffamily{\bfseries\small {inr}}}}}}}\, x {\ensuremath{\Rightarrow}}e_3} \;\equiv\; {{\ensuremath{\mbox{\sffamily{\bfseries\small {fst}}}}}}(e_1) \; (({\ensuremath{\lambda x \,.\, e_2}}) \;
-  {{\ensuremath{\mbox{\sffamily{\bfseries\small {snd}}}}}}(e)) \; (({\ensuremath{\lambda x \,.\, e_3}}) \; {{\ensuremath{\mbox{\sffamily{\bfseries\small {snd}}}}}}(e))\end{gathered}$$
+$$
+\begin{gathered}
+  \case{e_1}{e_2}{e_3} \;\equiv\; \kw{fst}(e_1) \; ((\lam{e_2}) \;
+  \kw{snd}(e)) \; ((\lam{e_3}) \; \kw{snd}(e))
+\end{gathered}
+$$
 
-${{\ensuremath{\mbox{\sffamily{\bfseries\small {fst}}}}}}(e_1)$ extracts
-the first element of the union pair, which will be either
-<span><span>$\mbox{\sffamily{\bfseries\small {true}}}$</span></span> or
-<span><span>$\mbox{\sffamily{\bfseries\small {false}}}$</span></span>
-(recall that they are functions that take two arguments and return
-either the first or second one, respectively). The two arguments we pass
-are the cases for left and right. The first one calls
-<span>$\lambda x \,.\, e_2$</span> passing in the second element of the
-pair (the actual value of the union), and the second one does the same
-except it calls <span>$\lambda x \,.\, e_3$</span>. So if the union is a
-“left” value then
-<span><span>$\mbox{\sffamily{\bfseries\small {case}}}$</span></span>
-will return the result of evaluating $e_2$ on the union’s value, and if
-the union is a “right” value then
-<span><span>$\mbox{\sffamily{\bfseries\small {case}}}$</span></span>
+$\kw{fst}(e_1)$ extracts the first element of the union pair, which will be
+either $\kw{true}$ or $\kw{false}$ (recall that they are functions that take two
+arguments and return either the first or second one, respectively). The two
+arguments we pass are the cases for left and right. The first one calls
+$\lam{e_2}$ passing in the second element of the pair (the actual value of the
+union), and the second one does the same except it calls $\lam{e_3}$. So if the
+union is a “left” value then $\kw{case}$ will return the result of evaluating
+$e_2$ on the union’s value, and if the union is a “right” value then $\kw{case}$
 will return the result of evaluating $e_3$ on the union’s value
 
 ## Example Expressions
 
--   (<span>$\lambda x \,.\, x+x$</span>)
-    ((<span>$\lambda y \,.\, y+1$</span>) 6)
+-   $(\lam{x+x}) \; ((\lam[y]{y+1}) \; 6)$
 
--   ((<span>$\lambda fgx \,.\, g \; (f \; x)$</span>)
-    (<span>$\lambda y \,.\, y+1$</span>)
-    (<span>$\lambda z \,.\, z*z$</span>)) 2
+-   $((\lam[fgx]{g \; (f \; x)}) \; (\lam[y]{y+1}) \; (\lam[z]{z*z})) \; 2$
 
--   <span><span>$\mbox{\sffamily{\bfseries\small {snd}}}$</span></span>((<span>$\lambda x \,.\, ({{\ensuremath{\mbox{\sffamily{\bfseries\small {snd}}}}}}(x), {{\ensuremath{\mbox{\sffamily{\bfseries\small {fst}}}}}}(x))$</span>)
-    (1, 2))
+-   $\kw{snd}((\lam{(\kw{snd}(x), \kw{fst}(x))}) \; (1, 2))$
 
--   (<span>$\lambda z \,.\, {{{\ensuremath{\mbox{\sffamily{\bfseries\small {case }}}}}}z{{\ensuremath{\mbox{\sffamily{\bfseries\small { of }}}}}}{{{\ensuremath{\mbox{\sffamily{\bfseries\small {inl}}}}}}}\, x {\ensuremath{\Rightarrow}}x+1 {\ \mid\ }{{{\ensuremath{\mbox{\sffamily{\bfseries\small {inr}}}}}}}\, x {\ensuremath{\Rightarrow}}({{\ensuremath{\mbox{\sffamily{\bfseries\small {fst}}}}}}(x)+1, {{\ensuremath{\mbox{\sffamily{\bfseries\small {snd}}}}}}(x)+1)}$</span>)
-    <span><span>$\mbox{\sffamily{\bfseries\small {inr}}}$</span></span>((<span>$\lambda w \,.\, (w, w)$</span>)
-    1)
+-   $(\lam[z]{\case{z}{x+1}{(\kw{fst}(x)+1, \kw{snd}(x)+1)}}) \; \kw{inr}((\lam[w]{(w, w)}) \; 1)$
 
 
