@@ -26,6 +26,32 @@ $$
 \newcommand{\case}[3]{\kw{case\ }#1\kw{\ of\ }\inl\, x \To #2 \alt \inr\, x \To #3}
 $$
 
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="/js/lambda-parser.js"></script>
+<script src="/js/lambda-trees.js"></script>
+
+<style>
+
+  .node square {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 3px;
+  }
+
+  .node text { 
+    font: 14px sans-serif; 
+    //font-weight: bold;
+    fill: cornflowerblue;
+  }
+
+  .link {
+    fill: none;
+    stroke: peachpuff;
+    stroke-width: 2px;
+  }
+  
+</style>
+
 * TOC
 {:toc}
 
@@ -243,11 +269,19 @@ variable (which will always be a leaf node). Here are some examples:
 
 ### AST for <span>$\lambda fx \,.\, f \; (f \; x)$</span>
 
-**Todo**
+<div id="tree1">
+  <script>
+    drawLambdaExpression("#tree1", "λf.λx.(f(f x))");
+  </script>
+</div>
 
 ### AST for <span>$\lambda ufx \,.\, f \; ((u \; f) \; x)$</span>
 
-**Todo**
+<div id="tree2">
+  <script>
+    drawLambdaExpression("#tree2", "λu.λf.λx.(f((u f)x))");
+  </script>
+</div>
 
 # Semantics of $\lambda$-Calculus
 
@@ -271,7 +305,11 @@ $$
 \end{gathered}
 $$
 
-**Todo**
+<div id="tree3">
+  <script>
+    drawLambdaExpression("#tree3", "(λx.(λf.(λx.(f 0) 2) λa.x) 1)");
+  </script>
+</div>
 
 Each time we call a function (the ’@’ nodes in the AST) we push a new
 mapping onto the environment: first $x \mapsto 1$, then $f \mapsto
