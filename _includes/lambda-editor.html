@@ -1,0 +1,18 @@
+<div ng-app="lambdaTreesApp" ng-controller="VisController">
+  <div id="text-entry">
+    <input id="expression" 
+           type="text" 
+           ng-model="expression"
+           ng-change="displayExpression();">
+      
+    </input>
+  </div>
+
+  <div id="messages" role="alert" ng-show="errorMessage">
+      [[{ errorMessage }]]
+  </div>
+
+  <div id="tree-vis">
+    
+  </div>
+</div>

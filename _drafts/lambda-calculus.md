@@ -5,55 +5,8 @@ title:  "Lambda Calculus"
 date:   2015-05-20 22:12:31
 ---
 
-<!-- LaTeX macros -->
-$$
-\newcommand{\alt}{\ \mid\ }
-\newcommand{\lalt}{\ \ \ \alt}
-\newcommand{\mtt}[1]{\mathit{#1}}
-\newcommand{\To}{\Rightarrow}
-\newcommand{\anywhere}[1]{\mbox{#1}}
-\newcommand{\kw}[1]{\anywhere{\sffamily{\bfseries\small {#1}}}}
-\newcommand{\kw}[1]{\mathbf{#1}}
-\newcommand{\lam}[2][x]{\lambda #1 \,.\, #2}
-\newcommand{\fst}{\kw{fst}}
-\newcommand{\snd}{\kw{snd}}
-\newcommand{\inl}{\kw{inl}}
-\newcommand{\inr}{\kw{inr}}
-\newcommand{\case}[3]{\kw{case\ }#1\kw{\ of\ }\inl\, x \To #2 \alt \inr\, x \To #3}
-$$
-
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-<script src="/js/lambda-parser.js"></script>
-<script src="/js/lambda-trees.js"></script>
-<script src="/js/lambda-editor.js"></script>
-
-<style>
-
-  .node square {
-    fill: #fff;
-    stroke: steelblue;
-    stroke-width: 3px;
-  }
-
-  .node text { 
-    font: 14px sans-serif; 
-    //font-weight: bold;
-    fill: cornflowerblue;
-  }
-
-  .link {
-    fill: none;
-    stroke: peachpuff;
-    stroke-width: 2px;
-  }
-
-  .lambda-tree {
-    width: 80%;
-    margin: auto;
-  }
-  
-</style>
+{% include macros.html %}
+{% include lambda-trees.html %}
 
 * TOC
 {:toc}
@@ -137,7 +90,8 @@ $f(x) = x^2 + 2x + 1$. To determine the value of $f(3)$, we *substitute*
 the argument 3 for the variable $x$ in the body of the function, then
 *reduce* until we reach the final answer:
 
-$$\begin{aligned}
+$$
+\begin{aligned}
   f(3) &= 3^2 + 2 \cdot 3 + 1
   \\
   &= 9 + 2 \cdot 3 + 1
@@ -146,7 +100,9 @@ $$\begin{aligned}
   \\
   &= 15 + 1
   \\
-  &= 16\end{aligned}$$
+  &= 16
+\end{aligned}
+$$
 
 The function has a name, $f$, but that name is actually superfluous; we
 could have called it $g$, *bob*, or anything else we wanted to and it
@@ -158,7 +114,8 @@ function*, i.e., a function with no name. Of course, that raises the
 question of how to call the function if it doesn’t have a name. The
 syntax for calling anonymous functions is as follows:
 
-$$\begin{aligned}
+$$
+\begin{aligned}
   (x \mapsto x^2 + 2x + 1)\; 3&= 3^2 + 2 \cdot 3 + 1
   \\
   &= 9 + 2 \cdot 3 + 1
@@ -167,7 +124,9 @@ $$\begin{aligned}
   \\
   &= 15 + 1
   \\
-  &= 16\end{aligned}$$
+  &= 16
+\end{aligned}
+$$
 
 We simply juxtapose the function we’re calling with its argument. In the
 previous examples the arguments were all numbers, but that doesn’t have
@@ -200,7 +159,8 @@ the parameter to the argument. When evaluating the function body,
 whenever we see a variable we look it up in the environment to get its
 corresponding value. For example:
 
-$$\begin{aligned}
+$$
+\begin{aligned}
   & \text{Function evaluation} & \text{Environment}
   \\
   (x \mapsto x^2 + 2x + 1)\; 3&= x^2 + 2x + 1 & [x \mapsto 3]
@@ -211,7 +171,9 @@ $$\begin{aligned}
   \\
   &= 15 + 1 & [x \mapsto 3]
   \\
-  &= 16 & [x \mapsto 3]\end{aligned}$$
+  &= 16 & [x \mapsto 3]
+\end{aligned}
+$$
 
 # Syntax of $\lambda$-Calculus
 
@@ -219,12 +181,15 @@ The $\lambda$-calculus doesn’t actually contain numbers and arithmetic;
 it only has functions, nothing else. The syntax of $\lambda$-calculus
 expressions is:
 
-$$\begin{aligned}
+$$
+\begin{aligned}
   e \in {\mathit{Exp}} &::= x & \text{variables}
   \\
   &{\ \ \ {\ \mid\ }}{\lambda x \,.\, e} & \text{function abstraction}
   \\
-  &{\ \ \ {\ \mid\ }}e_1 \; e_2 & \text{function application}\end{aligned}$$
+  &{\ \ \ {\ \mid\ }}e_1 \; e_2 & \text{function application}
+\end{aligned}
+$$
 
 Note that we use ${\lambda x \,.\, e}$ to define functions
 instead of $x
@@ -236,26 +201,26 @@ $\hat{\;}$ symbol and so used $\lambda$ instead.
 
 ## Example Expressions
 
--   <span>$\lambda f \,.\, {\lambda x \,.\, x}$</span>
+-   $\lambda f \,.\, {\lambda x \,.\, x}$
 
--   <span>$\lambda f \,.\, {\lambda x \,.\, f \; x}$</span>
+-   $\lambda f \,.\, {\lambda x \,.\, f \; x}$
 
--   <span>$\lambda f \,.\, {\lambda x \,.\, f \; (f \; x)}$</span>
+-   $\lambda f \,.\, {\lambda x \,.\, f \; (f \; x)}$
 
--   <span>$\lambda u \,.\, {\lambda f \,.\, {\lambda x \,.\, f \; ((u \; f) \; x)}}$</span>
+-   $\lambda u \,.\, {\lambda f \,.\, {\lambda x \,.\, f \; ((u \; f) \; x)}}$
 
 Often we’ll use the shorthand notation <span>$\lambda xy \,.\, e$</span>
 to stand for
 <span>$\lambda x \,.\, {\lambda y \,.\, e}$</span>; using
 that convention the expressions would look like this:
 
--   <span>$\lambda fx \,.\, x$</span>
+-   $\lambda fx \,.\, x$
 
--   <span>$\lambda fx \,.\, f \; x$</span>
+-   $\lambda fx \,.\, f \; x$
 
--   <span>$\lambda fx \,.\, f \; (f \; x)$</span>
+-   $\lambda fx \,.\, f \; (f \; x)$
 
--   <span>$\lambda ufx \,.\, f \; ((u \; f) \; x)$</span>
+-   $\lambda ufx \,.\, f \; ((u \; f) \; x)$
 
 ## Abstract Syntax Trees (AST)
 
@@ -288,24 +253,7 @@ variable (which will always be a leaf node). Here are some examples:
 
 ### Try it for yourself
 
-<div ng-app="lambdaTreesApp" ng-controller="VisController">
-  <div id="text-entry">
-          <input id="expression" 
-                 type="text" 
-                 ng-model="expression"
-                 ng-change="displayExpression();">
-            
-          </input>
-        </div>
-
-  <div id="messages" role="alert" ng-show="errorMessage">
-      [[{ errorMessage }]]
-  </div>
-
-  <div id="tree-vis">
-    
-  </div>
-</div>
+{% include lambda-editor.html %}
 
 # Semantics of $\lambda$-Calculus
 
@@ -372,6 +320,7 @@ $$
   b \in {\mathit{Bool}}
 \end{gathered}
 $$
+
 $$
 \begin{aligned}
   e \in \mtt{Exp} &::= n \alt b \alt x \alt \lam{e} \alt e_1\; e_2 
@@ -549,5 +498,3 @@ will return the result of evaluating $e_3$ on the union’s value
 -   $\kw{snd}((\lam{(\kw{snd}(x), \kw{fst}(x))}) \; (1, 2))$
 
 -   $(\lam[z]{\case{z}{x+1}{(\kw{fst}(x)+1, \kw{snd}(x)+1)}}) \; \kw{inr}((\lam[w]{(w, w)}) \; 1)$
-
-

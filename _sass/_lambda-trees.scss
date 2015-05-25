@@ -1,0 +1,22 @@
+  .node square {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 3px;
+  }
+
+  .node text { 
+    font: 14px sans-serif; 
+    //font-weight: bold;
+    fill: cornflowerblue;
+  }
+
+  .link {
+    fill: none;
+    stroke: peachpuff;
+    stroke-width: 2px;
+  }
+
+  .lambda-tree {
+    width: 80%;
+    margin: auto;
+  }

@@ -1,0 +1,16 @@
+<!-- LaTeX macros -->
+$$
+\newcommand{\alt}{\ \mid\ }
+\newcommand{\lalt}{\ \ \ \alt}
+\newcommand{\mtt}[1]{\mathit{#1}}
+\newcommand{\To}{\Rightarrow}
+\newcommand{\anywhere}[1]{\mbox{#1}}
+\newcommand{\kw}[1]{\anywhere{\sffamily{\bfseries\small {#1}}}}
+\newcommand{\kw}[1]{\mathbf{#1}}
+\newcommand{\lam}[2][x]{\lambda #1 \,.\, #2}
+\newcommand{\fst}{\kw{fst}}
+\newcommand{\snd}{\kw{snd}}
+\newcommand{\inl}{\kw{inl}}
+\newcommand{\inr}{\kw{inr}}
+\newcommand{\case}[3]{\kw{case\ }#1\kw{\ of\ }\inl\, x \To #2 \alt \inr\, x \To #3}
+$$
