@@ -25,12 +25,20 @@ var diagonal = d3.svg.diagonal()
   .projection(function(d) { return [d.x, d.y]; });
 
 function drawTree(elem, root) {
-  d3.select(elem).select('#tree-svg').remove();
 
   // compute sizes
   var svgWidth = parseInt(d3.select(elem).style('width'), 10);
   var svgHeight = treeHeight(root) * depthSep;
 
+  // remove any previous tree visualization
+  d3.select(elem).select('#tree-svg').remove();
+
+  // don't display an empty tree
+  if (root === null) {
+    return;
+  }
+
+  // add a component for the tree
   var svg = d3.select(elem).append("svg")
     .attr("id", "tree-svg")
     .attr("width", svgWidth)
@@ -38,22 +46,22 @@ function drawTree(elem, root) {
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+  // compute the new tree layout
   var tree = d3.layout.tree()
     .size([svgHeight, svgWidth]);
 
-  // Compute the new tree layout.
   var nodes = tree.nodes(root).reverse();
   var links = tree.links(nodes);
 
-  // Normalize for fixed-depth.
+  // compute depth of each node
   nodes.forEach(function(d) { d.y = d.depth * depthSep; });
 
-  // Declare the nodes…
+  // declare the nodes
   var i = 0;
   var node = svg.selectAll("g.node")
     .data(nodes, function(d) { return d.id || (d.id = ++i); });
 
-  // Enter the nodes.
+  // draw the nodes
   var nodeEnter = node.enter().append("g")
     .attr("class", "node")
     .attr("transform", function(d) { 
@@ -69,11 +77,11 @@ function drawTree(elem, root) {
     .text(function(d) { return d.name; })
     .style("fill-opacity", 1);
 
-  // Declare the links…
+  // declare the links
   var link = svg.selectAll("path.link")
     .data(links, function(d) { return d.target.id; });
 
-  // Enter the links.
+  // draw the links
   link.enter().insert("path", "g")
     .attr("class", "link")
     .attr("d", diagonal);
