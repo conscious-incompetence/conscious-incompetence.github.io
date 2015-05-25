@@ -74,7 +74,7 @@ determine whether that theorem is true or false. This is called the
 *Entscheidungsproblem*, or “decision problem”. It was assumed at the
 time that naturally such an algorithm existed, it was just a question of
 finding it. However, this goal turned out to be provably impossible. The
-three people most reponsible for killing this dream are **Kurt Gödel**
+three people most responsible for killing this dream are **Kurt Gödel**
 with his Incompleteness Theorems, **Alan Turing** with his Turing
 Machines, and **Alonzo Church** with his $\lambda$-calculus. We’ll focus
 here on Turing and Church.
@@ -101,7 +101,7 @@ thus Hilbert’s Program was doomed. Turing published this result in 1936.
 
 Historical sidenote: Turing was a prolific researcher and became
 involved in a number of Computer Science-related problems. Many people
-have heard of the *Turing Test* for Artifical Intelligence, which he
+have heard of the *Turing Test* for Artificial Intelligence, which he
 invented. Turing was also a significant contributor to the World War II
 war effort in Bletchley Park, the nerve center of the Allies’ efforts to
 break the German secret codes. He was also gay, and despite his many
@@ -438,7 +438,7 @@ in a similar way.
 Historical sidenote: The successor, addition, and multiplication
 functions were simple to encode, but not all encodings are as obvious.
 Church and his students spent a long time trying to figure out how to
-encode the predecessor function (the function that substracts 1 from a
+encode the predecessor function (the function that subtracts 1 from a
 number), which is needed to define subtraction and division. Finally,
 Church’s student Kleene went to the dentist for an operation, and as he
 was being anesthetized with laughing gas he had a flash of inspiration
