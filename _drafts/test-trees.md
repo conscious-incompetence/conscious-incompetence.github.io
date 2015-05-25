@@ -30,10 +30,32 @@ date:   2015-05-20 22:12:31
  
 <!-- load the d3.js library --> 
 <script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="/js/lambda-editor.js"></script>
 <script src="/js/lambda-parser.js"></script>
 <script src="/js/lambda-trees.js"></script>
 
+<div ng-app="lambdaTreesApp" ng-controller="VisController">
+  <div id="text-entry">
+          <input id="expression" 
+                 type="text" 
+                 ng-model="expression"
+                 ng-change="displayExpression();">
+            
+          </input>
+        </div>
 
+  <div id="messages" role="alert" ng-show="errorMessage">
+      [[{ errorMessage }]]
+  </div>
+
+  <div id="tree-vis">
+    
+  </div>
+</div>
+
+<div id="tree1">
 <script>
-  drawLambdaExpression("(λx.(λf.(λq.(f 0) 2) λa.x) 1)");
+  drawLambdaExpression('#tree1', "(λx.(λf.(λq.(f 0) 2) λa.x) 1)");
 </script>
+</div>
