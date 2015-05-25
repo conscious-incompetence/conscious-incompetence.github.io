@@ -2,30 +2,51 @@
 <!-- Based on: https://leanpub.com/D3-Tips-and-Tricks/read -->
 
 // ************** Generate the tree diagram  *****************
-var margin = {top: 20, right: 120, bottom: 20, left: 120},
-  width = 960 - margin.right - margin.left,
-  height = 500 - margin.top - margin.bottom;
-  
-var tree = d3.layout.tree()
-  .size([height, width]);
 
+var depthSep = 50;  // the number of pixels between tree levels
+
+/**
+ * [height most number of nodes from root to a leaf, inclusive]
+ */
+function treeHeight(tree) {
+  if (!tree) {
+    return 0;
+  } else if (!tree['children']) {
+    return 1;
+  } else {
+    var childHeights = tree['children'].map(treeHeight);
+    return 1 + Math.max.apply(Math, childHeights);
+  }
+}
+
+var margin = {top: 20, right: 120, bottom: 20, left: 120};
+  
 var diagonal = d3.svg.diagonal()
   .projection(function(d) { return [d.x, d.y]; });
 
 function drawTree(elem, root) {
+  d3.select(elem).select('#tree-svg').remove();
+
+  // compute sizes
+  var svgWidth = parseInt(d3.select(elem).style('width'), 10);
+  var svgHeight = treeHeight(root) * depthSep;
 
   var svg = d3.select(elem).append("svg")
-    .attr("width", width + margin.right + margin.left)
-    .attr("height", height + margin.top + margin.bottom)
+    .attr("id", "tree-svg")
+    .attr("width", svgWidth)
+    .attr("height", svgHeight)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+  var tree = d3.layout.tree()
+    .size([svgHeight, svgWidth]);
+
   // Compute the new tree layout.
-  var nodes = tree.nodes(root).reverse(),
-    links = tree.links(nodes);
+  var nodes = tree.nodes(root).reverse();
+  var links = tree.links(nodes);
 
   // Normalize for fixed-depth.
-  nodes.forEach(function(d) { d.y = d.depth * 35; });
+  nodes.forEach(function(d) { d.y = d.depth * depthSep; });
 
   // Declare the nodes…
   var i = 0;
