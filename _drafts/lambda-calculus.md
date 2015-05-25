@@ -27,8 +27,10 @@ $$
 $$
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
 <script src="/js/lambda-parser.js"></script>
 <script src="/js/lambda-trees.js"></script>
+<script src="/js/lambda-editor.js"></script>
 
 <style>
 
@@ -286,6 +288,27 @@ variable (which will always be a leaf node). Here are some examples:
   <script>
     drawLambdaExpression("#tree2", "λu.λf.λx.(f((u f)x))");
   </script>
+</div>
+
+### Try it for yourself
+
+<div ng-app="lambdaTreesApp" ng-controller="VisController">
+  <div id="text-entry">
+          <input id="expression" 
+                 type="text" 
+                 ng-model="expression"
+                 ng-change="displayExpression();">
+            
+          </input>
+        </div>
+
+  <div id="messages" role="alert" ng-show="errorMessage">
+      [[{ errorMessage }]]
+  </div>
+
+  <div id="tree-vis">
+    
+  </div>
 </div>
 
 # Semantics of $\lambda$-Calculus
