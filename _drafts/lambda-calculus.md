@@ -49,6 +49,11 @@ $$
     stroke: peachpuff;
     stroke-width: 2px;
   }
+
+  .lambda-tree {
+    width: 80%;
+    margin: auto;
+  }
   
 </style>
 
@@ -254,7 +259,7 @@ that convention the expressions would look like this:
 
 -   <span>$\lambda ufx \,.\, f \; ((u \; f) \; x)$</span>
 
-## Abstract Syntax Tree (AST)
+## Abstract Syntax Trees (AST)
 
 Expressions in the $\lambda$-calculus can get rather complex and
 difficult to read. It is often beneficial to rewrite expressions into
@@ -269,7 +274,7 @@ variable (which will always be a leaf node). Here are some examples:
 
 ### AST for <span>$\lambda fx \,.\, f \; (f \; x)$</span>
 
-<div id="tree1">
+<div class="lambda-tree" id="tree1">
   <script>
     drawLambdaExpression("#tree1", "λf.λx.(f(f x))");
   </script>
@@ -277,7 +282,7 @@ variable (which will always be a leaf node). Here are some examples:
 
 ### AST for <span>$\lambda ufx \,.\, f \; ((u \; f) \; x)$</span>
 
-<div id="tree2">
+<div class="lambda-tree" id="tree2">
   <script>
     drawLambdaExpression("#tree2", "λu.λf.λx.(f((u f)x))");
   </script>
@@ -305,7 +310,7 @@ $$
 \end{gathered}
 $$
 
-<div id="tree3">
+<div class="lambda-tree" id="tree3">
   <script>
     drawLambdaExpression("#tree3", "(λx.(λf.(λx.(f 0) 2) λa.x) 1)");
   </script>
