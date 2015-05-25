@@ -11,10 +11,6 @@ $$
 \newcommand{\lalt}{\ \ \ \alt}
 \newcommand{\mtt}[1]{\mathit{#1}}
 \newcommand{\To}{\Rightarrow}
-\newcommand{\tr}{\;\mtt{true}}
-\newcommand{\hyp}[1][]{\Gamma{#1} \vdash}
-\newcommand{\spacer}{\vspace{.1in}}
-\newcommand{\spacerr}{\vspace{.2in}}
 \newcommand{\anywhere}[1]{\mbox{#1}}
 \newcommand{\kw}[1]{\anywhere{\sffamily{\bfseries\small {#1}}}}
 \newcommand{\kw}[1]{\mathbf{#1}}
