@@ -1,22 +1,35 @@
-  .node square {
-    fill: #fff;
-    stroke: steelblue;
-    stroke-width: 3px;
-  }
+$node-text-color: cornflowerblue;
+$node-border-color: steelblue;
+$link-color: peachpuff;
+
+#expression {
+  @extend .form-control;
+  font-size: large;
+}
+
+#messages {
+  @extend .alert;
+  @extend .alert-danger;
+  margin: 5px 0px;
+}
+
+.lambda-tree {
+  margin-top: 20px;
 
   .node text { 
-    font: 14px sans-serif; 
-    //font-weight: bold;
-    fill: cornflowerblue;
+    font: 18px sans-serif; 
+    fill: $node-text-color;
+  }
+
+  .node square {
+    fill: #fff;
+    stroke: $node-border-color;
+    stroke-width: 3px;
   }
 
   .link {
     fill: none;
-    stroke: peachpuff;
+    stroke: $link-color;
     stroke-width: 2px;
   }
-
-  .lambda-tree {
-    width: 80%;
-    margin: auto;
-  }
+}

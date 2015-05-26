@@ -24,7 +24,7 @@ expression needs to have the following syntax:
       [[{ errorMessage }]]
   </div>
 
-  <div id="tree-vis">
+  <div class="lambda-tree" id="tree-vis">
     
   </div>
 </div>
