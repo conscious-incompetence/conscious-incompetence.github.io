@@ -7,6 +7,7 @@ date:   2015-05-20 22:12:31
 
 {% include macros.html %}
 {% include lambda-trees.html %}
+{% include variables.md %}
 
 * TOC
 {:toc}
@@ -48,7 +49,7 @@ to solve those problems; these problems are called *undecidable*. It
 turns out that Hilbert’s decision problem belongs in this class, and
 thus Hilbert’s Program was doomed. Turing published this result in 1936.
 
-<aside>
+{{ %aside }}
 Historical sidenote: Turing was a prolific researcher and became
 involved in a number of Computer Science-related problems. Many people
 have heard of the *Turing Test* for Artificial Intelligence, which he
@@ -57,7 +58,7 @@ war effort in Bletchley Park, the nerve center of the Allies’ efforts to
 break the German secret codes. He was also gay, and despite his many
 contributions the British government’s intolerance of his lifestyle led
 to his early and tragic death.
-</aside>
+{{ %endaside }}
 
 ## Alonzo Church
 
