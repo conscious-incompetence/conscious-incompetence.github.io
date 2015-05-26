@@ -9,3 +9,7 @@
 .post {
   @extend .col-md-9;
 }
+
+#markdown-toc {
+  @extend .clean-lists;
+}
