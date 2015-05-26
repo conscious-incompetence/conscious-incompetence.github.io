@@ -382,6 +382,7 @@ arithmetic to work because of the way that we have encoded numbers as
 functions. We could encode subtraction, division, integers, and more
 in a similar way.
 
+<aside>
 Historical sidenote: The successor, addition, and multiplication
 functions were simple to encode, but not all encodings are as obvious.
 Church and his students spent a long time trying to figure out how to
@@ -390,6 +391,7 @@ number), which is needed to define subtraction and division. Finally,
 Church’s student Kleene went to the dentist for an operation, and as he
 was being anesthetized with laughing gas he had a flash of inspiration
 and figured out the solution.
+</aside>
 
 ## Booleans
 
