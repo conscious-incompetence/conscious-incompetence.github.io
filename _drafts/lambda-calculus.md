@@ -253,7 +253,7 @@ variable (which will always be a leaf node). Here are some examples:
 
 ### Try it for yourself
 
-{% include lambda-editor.html %}
+{% include lambda-editor.md %}
 
 # Semantics of $\lambda$-Calculus
 
