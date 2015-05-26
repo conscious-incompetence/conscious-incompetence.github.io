@@ -1,0 +1,27 @@
+/**
+ * Site footer
+ */
+
+footer.site-footer {
+    @extend .container-fluid;
+    @include clean-lists;
+
+    border-top: 1px solid $grey-color-light;
+    padding: 20px 20px;
+
+    h2 {
+        margin-top: 0;
+    }
+
+    .content {
+        @extend .row;
+
+        .contact {
+            @extend .col-md-4;
+        }
+
+        .info {
+            @extend .col-md-8;
+        }
+    }    
+}

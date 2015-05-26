@@ -1,0 +1,11 @@
+.page-content {
+    @extend .container;
+
+    .wrapper {
+      @extend .row;
+    }
+}
+
+.post {
+  @extend .col-md-9;
+}

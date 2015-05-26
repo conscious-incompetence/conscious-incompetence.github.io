@@ -1,0 +1,14 @@
+@mixin clean-lists {
+  ul, ol {
+    list-style: none;
+    padding: 0;
+
+    li {
+      padding: 0;
+    }
+  }
+}
+
+@mixin bordered($color: black, $size: 1px, $kind: solid) {
+    border: $size $kind $color;
+}
