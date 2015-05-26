@@ -1,7 +1,7 @@
 ---
 layout: post
 author: "Ben Wiedermann"
-title:  "Cannoncical post"
+title:  "Sample post"
 categories: "meta"
 tags: "kramdown jekyll HTML CSS"
 ---

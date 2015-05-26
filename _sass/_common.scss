@@ -1,3 +1,6 @@
+/**
+ * Lists
+ */
 .clean-lists {
     list-style: none;
     padding: 0;
@@ -15,4 +18,42 @@
 
 @mixin bordered($color: black, $size: 1px, $kind: solid) {
     border: $size $kind $color;
+}
+
+/**
+ * Tables
+ */
+table.booktabs {
+  margin: auto; // centers table horizontally
+
+  thead {
+    font-weight: bold;
+    border-top: 2px solid black;
+    border-bottom: 1px solid black;
+  }
+
+  tfoot {
+    border-top: 1px solid black;
+    border-bottom: 2px solid black;
+  }
+
+  // provides some space in the cells
+  th, td {
+    padding: 3px 8px;
+  }
+
+  // add some extra whitespace at the edges of the table
+  tr {
+    td:first-child, th:first-child {
+      padding-left: 6px;
+    }
+    td:last-child, th:last-child {
+      padding-right: 6px;
+    }
+  }
+}
+
+// tables have booktabs formatting by default
+table {
+  @extend .booktabs;
 }
