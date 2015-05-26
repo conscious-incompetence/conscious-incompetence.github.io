@@ -1,13 +1,9 @@
 .page-content {
-    @extend .container;
-
-    .wrapper {
-      @extend .row;
-    }
+    width: 65%;
+    margin: auto;
 }
 
 .post {
-  @extend .col-md-9;
 }
 
 #markdown-toc {
