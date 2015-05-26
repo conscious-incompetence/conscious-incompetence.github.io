@@ -26,6 +26,8 @@ shows how the stylesheets display the text.
 {:toc}
 
 ## Headings
+Don't use H1; that heading is reserved for the title of the post. Use H2 (`##`) 
+or smaller for headings.
 
 # H1
 {:.no_toc}
@@ -51,11 +53,12 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, officiis,
 pariatur nobis similique ipsam quas quod dignissimos fuga modi eveniet dolor
 necessitatibus earum ad exercitationem voluptas omnis suscipit a totam.
 
-Some **bold** text.
+**bold** *italic* `fixed-width` 
 
-Some *italic* text.
-
-Some `fixed-width` text.
+> **Blockquote.** Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+> Voluptas, error, laboriosam, molestiae alias consectetur omnis natus laborum
+> enim tenetur nulla officiis eaque exercitationem explicabo deleniti recusandae
+> non iusto et ullam.
 
 ## Lists
 
@@ -71,11 +74,22 @@ Some `fixed-width` text.
    + item
    + item
 
+### definition
+
+term
+: definition
+
+## Asides
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, explicabo, quaerat, mollitia, quod officiis cupiditate laborum commodi fuga eos iste provident veritatis aliquam minus cum ut doloremque voluptatem quasi voluptas?
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, ut, nulla, ducimus voluptate corrupti labore animi et doloremque alias quibusdam exercitationem quae optio assumenda at facilis maxime expedita. Consequatur, velit.
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, alias, placeat incidunt accusamus laboriosam id autem natus fugiat nobis vitae tenetur obcaecati distinctio illo ab officiis et dolor voluptatum tempora.
+
+<aside>
+  This is aside text. <strong>Text in an aside has to be in HTML</strong> :(.
+</aside>
+
 ## Footnotes
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore, tempora, quas,
-odio ipsum voluptates optio tempore incidunt reprehenderit omnis fuga
-consequatur deserunt qui pariatur accusamus enim velit perspiciatis? Molestias,
-dolore![^f1]
+A footnote. [^f1]
 
 [^f1]: A footnote
 
@@ -102,8 +116,33 @@ end
 Some inline math: $x \sqsubseteq y$
 
 Some block math:
-**TODO**
+
+$$
+\begin{aligned}
+  f(3) &= 3^2 + 2 \cdot 3 + 1
+  \\
+  &= 9 + 2 \cdot 3 + 1
+  \\
+  &= 9 + 6 + 1
+  \\
+  &= 15 + 1
+  \\
+  &= 16
+\end{aligned}
+$$
 
 ## Images
 
-**TODO**
+![grace_hopper](https://upload.wikimedia.org/wikipedia/commons/3/37/Grace_Hopper_and_UNIVAC.jpg)
+
+## Tables
+
+| Header1 | Header2 | Header3 |
+|:--------|:-------:|--------:|
+| cell1   | cell2   | cell3   |
+| cell4   | cell5   | cell6   |
+|----
+| cell1   | cell2   | cell3   |
+| cell4   | cell5   | cell6   |
+|=====
+| Foot1   | Foot2   | Foot3
