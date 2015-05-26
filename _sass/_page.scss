@@ -1,9 +1,18 @@
 .page-content {
     width: 65%;
-    margin: auto;
+    margin-left: 5%;
 }
 
 .post {
+  aside {
+    float: right;
+    width: 20%;    
+    padding: 10px 20px;
+    font-size: tiny;
+    position: absolute;
+    right: 5%;
+    transform: translateY(-10em);
+  }
 }
 
 #markdown-toc {
