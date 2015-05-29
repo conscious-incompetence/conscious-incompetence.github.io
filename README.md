@@ -1,7 +1,20 @@
+# How to contribute to Conscious Incompetence
+
+The live version of the site lives at: 
+[https://conscious-incompetence.github.io/](https://conscious-incompetence.github.io/).
+This document describes how to contribute posts to the site.
+
+## How the website works
+The website is hosted on [GitHub Pages](https://pages.github.com/) and uses the 
+[Jekyll](http://jekyllrb.com/) blogging system. We write posts 
+mainly in Markdown format (although we can also embed LaTeX and HTML). Jekyll
+then generates a website from the Markdown files. GitHub Pages performs
+automatically generates the site for us, so all we have to do is push the
+Markdown to the repository.
+
 ## Writing blog posts
 
 ### Set up your computer
-The website is written 
 
 #### Install / obtain dependencies
    1. **Git,** for version control and synchronizing with the live website. 
@@ -67,7 +80,7 @@ Once the serve is running, you should be able to visit
   someone else, push it to the repository. The draft won't show up on the live
   website, but it _will_ be publicly available in the repository.
 
-#### Converting a LaTeX document to a post
+#### Convert a LaTeX document to a post
 If you have a LaTeX document that you want to convert to a post, there's a tool
 called [pandoc](http://pandoc.org/) that can help. Once you've installed it, you
 can run the following command to convert LaTeX to Markdown:
