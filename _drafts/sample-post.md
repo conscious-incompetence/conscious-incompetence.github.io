@@ -6,6 +6,9 @@ categories: "meta"
 tags: "kramdown jekyll HTML CSS"
 ---
 
+<!-- Includes -->
+{% include variables.md %}
+
 <!-- Links -->
 [Kramdown]: http://kramdown.gettalong.org/quickref.html
 [Jekyll]: http://jekyllrb.com/docs/home/
@@ -84,9 +87,9 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, explicabo, qua
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, ut, nulla, ducimus voluptate corrupti labore animi et doloremque alias quibusdam exercitationem quae optio assumenda at facilis maxime expedita. Consequatur, velit.
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, alias, placeat incidunt accusamus laboriosam id autem natus fugiat nobis vitae tenetur obcaecati distinctio illo ab officiis et dolor voluptatum tempora.
 
-<aside>
-  This is aside text. <strong>Text in an aside has to be in HTML</strong> :(.
-</aside>
+{{ %aside }}
+  This is aside text. _Text in an aside can contain markdown._
+{{ %endaside }}
 
 ## Footnotes
 A footnote. [^f1]
