@@ -32,7 +32,9 @@ here on Turing and Church.
 ### Alan Turing
 
 {{ %aside }}
-Historical sidenote: Turing was a prolific researcher and became
+#### Historical sidenote
+
+Turing was a prolific researcher and became
 involved in a number of Computer Science-related problems. Many people
 have heard of the *Turing Test* for Artificial Intelligence, which he
 invented. Turing was also a significant contributor to the World War II
@@ -362,13 +364,15 @@ $$
 Where $s^n \; z$ means to apply function $s$ to $z$ a total of $n$
 times, e.g., $s^3 \; z = s \; (s \; (s \; z))$. In this encoding, 0 is a
 function that takes two arguments and returns the second one, and any
-natural number $n$ is the function that takes two arguments and applies
+natural number $n$ is the function tahat takes two arguments and applies
 the first one to the second one $n$ times. We can then define arithmetic
 on natural numbers as follows:
 
 
 {{ %aside }}
-Historical sidenote: The successor, addition, and multiplication
+#### Historical sidenote
+
+The successor, addition, and multiplication
 functions were simple to encode, but not all encodings are as obvious.
 Church and his students spent a long time trying to figure out how to
 encode the predecessor function (the function that subtracts 1 from a
