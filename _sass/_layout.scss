@@ -9,6 +9,7 @@
  */
 .page-content {
     padding: $spacing-unit 0;
+    @extend .container;
 }
 
 .page-heading {

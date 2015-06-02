@@ -31,6 +31,17 @@ here on Turing and Church.
 
 ## Alan Turing
 
+{{ %aside }}
+Historical sidenote: Turing was a prolific researcher and became
+involved in a number of Computer Science-related problems. Many people
+have heard of the *Turing Test* for Artificial Intelligence, which he
+invented. Turing was also a significant contributor to the World War II
+war effort in Bletchley Park, the nerve center of the Allies’ efforts to
+break the German secret codes. He was also gay, and despite his many
+contributions the British government’s intolerance of his lifestyle led
+to his early and tragic death.
+{{ %endaside }}
+
 Alan Turing was a fellow at King’s College when he became interested in
 the decision problem. He realized that to formally address this
 question, we needed a formal definition of what *algorithm* meant.
@@ -49,16 +60,6 @@ to solve those problems; these problems are called *undecidable*. It
 turns out that Hilbert’s decision problem belongs in this class, and
 thus Hilbert’s Program was doomed. Turing published this result in 1936.
 
-{{ %aside }}
-Historical sidenote: Turing was a prolific researcher and became
-involved in a number of Computer Science-related problems. Many people
-have heard of the *Turing Test* for Artificial Intelligence, which he
-invented. Turing was also a significant contributor to the World War II
-war effort in Bletchley Park, the nerve center of the Allies’ efforts to
-break the German secret codes. He was also gay, and despite his many
-contributions the British government’s intolerance of his lifestyle led
-to his early and tragic death.
-{{ %endaside }}
 
 ## Alonzo Church
 
@@ -365,6 +366,18 @@ natural number $n$ is the function that takes two arguments and applies
 the first one to the second one $n$ times. We can then define arithmetic
 on natural numbers as follows:
 
+
+{{ %aside }}
+Historical sidenote: The successor, addition, and multiplication
+functions were simple to encode, but not all encodings are as obvious.
+Church and his students spent a long time trying to figure out how to
+encode the predecessor function (the function that subtracts 1 from a
+number), which is needed to define subtraction and division. Finally,
+Church’s student Kleene went to the dentist for an operation, and as he
+was being anesthetized with laughing gas he had a flash of inspiration
+and figured out the solution.
+{{ %endaside }}
+
 $$
 \begin{aligned}
   \kw{succ} &\equiv \lam[nsz]{s \; (n \; s \; z)}
@@ -382,17 +395,6 @@ returns the product. These definitions work as we would expect
 arithmetic to work because of the way that we have encoded numbers as
 functions. We could encode subtraction, division, integers, and more
 in a similar way.
-
-<aside>
-Historical sidenote: The successor, addition, and multiplication
-functions were simple to encode, but not all encodings are as obvious.
-Church and his students spent a long time trying to figure out how to
-encode the predecessor function (the function that subtracts 1 from a
-number), which is needed to define subtraction and division. Finally,
-Church’s student Kleene went to the dentist for an operation, and as he
-was being anesthetized with laughing gas he had a flash of inspiration
-and figured out the solution.
-</aside>
 
 ## Booleans
 
