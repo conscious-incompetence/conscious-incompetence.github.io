@@ -6,7 +6,7 @@ description: > # this means to ignore newlines until "baseurl:"
   saepe ad cupiditate repellat error delectus nemo quidem quia distinctio quod
   sint molestiae quibusdam a eos ducimus quo veritatis laudantium!
 baseurl: "" # the subpath of your site, e.g. /blog/
-url: "http://yourdomain.com" # the base hostname & protocol for your site
+url: "conscious-incompetence.github.io" # the base hostname & protocol for your site
 #twitter_username: jekyllrb
 #github_username:  jekyll
 
@@ -14,4 +14,4 @@ url: "http://yourdomain.com" # the base hostname & protocol for your site
 markdown: kramdown
 
 kramdown:
-  toc_levels: '1..2'
+  toc_levels: '1..3'

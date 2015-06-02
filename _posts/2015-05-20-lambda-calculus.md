@@ -12,7 +12,7 @@ date:   2015-05-20 22:12:31
 * TOC
 {:toc}
 
-# Background on Computability
+## Background on Computability
 
 The history of computability stretches back a long ways, but we’ll start
 here with German mathematician **David Hilbert** in the 1920s. Hilbert
@@ -29,7 +29,7 @@ with his Incompleteness Theorems, **Alan Turing** with his Turing
 Machines, and **Alonzo Church** with his $\lambda$-calculus. We’ll focus
 here on Turing and Church.
 
-## Alan Turing
+### Alan Turing
 
 {{ %aside }}
 Historical sidenote: Turing was a prolific researcher and became
@@ -61,7 +61,7 @@ turns out that Hilbert’s decision problem belongs in this class, and
 thus Hilbert’s Program was doomed. Turing published this result in 1936.
 
 
-## Alonzo Church
+### Alonzo Church
 
 Alonzo Church was a professor at Princeton around the same time that
 Turing was a fellow at King’s College. He was not originally interested
@@ -87,7 +87,7 @@ usually use Turing Machines; in programming language theory we usually
 use the $\lambda$-calculus. The $\lambda$-calculus is also at the heart
 of all functional programming languages.
 
-# Some Intuition for the $\lambda$-Calculus
+## Some Intuition for the $\lambda$-Calculus
 
 The $\lambda$-calculus is all about functions. Consider the function
 $f(x) = x^2 + 2x + 1$. To determine the value of $f(3)$, we *substitute*
@@ -141,7 +141,7 @@ integral or differential of the argument, respectively). Functions that
 take other functions as arguments and/or return functions as results are
 called *higher-order functions*.
 
-## Environments
+### Environments
 
 When evaluating a function, the act of substituting the argument for the
 parameter in the body of the function (e.g., substituting 3 for $x$ in
@@ -179,7 +179,7 @@ $$
 \end{aligned}
 $$
 
-# Syntax of $\lambda$-Calculus
+## Syntax of $\lambda$-Calculus
 
 The $\lambda$-calculus doesn’t actually contain numbers and arithmetic;
 it only has functions, nothing else. The syntax of $\lambda$-calculus
@@ -203,7 +203,7 @@ $\hat{x} \,.\, e$ taken from Russell and Whitehead’s famous book
 *Principia Mathematica*, but the typesetter couldn’t reproduce the
 $\hat{\;}$ symbol and so used $\lambda$ instead.
 
-## Example Expressions
+### Example Expressions
 
 -   $\lambda f \,.\, {\lambda x \,.\, x}$
 
@@ -226,7 +226,7 @@ that convention the expressions would look like this:
 
 -   $\lambda ufx \,.\, f \; ((u \; f) \; x)$
 
-## Abstract Syntax Trees (AST)
+### Abstract Syntax Trees (AST)
 
 Expressions in the $\lambda$-calculus can get rather complex and
 difficult to read. It is often beneficial to rewrite expressions into
@@ -239,7 +239,7 @@ is a function application; we use ’@’ because function application is
 written using juxtaposition instead of using a special symbol), or a
 variable (which will always be a leaf node). Here are some examples:
 
-### AST for <span>$\lambda fx \,.\, f \; (f \; x)$</span>
+#### AST for <span>$\lambda fx \,.\, f \; (f \; x)$</span>
 
 <div class="lambda-tree" id="tree1">
   <script>
@@ -247,7 +247,7 @@ variable (which will always be a leaf node). Here are some examples:
   </script>
 </div>
 
-### AST for <span>$\lambda ufx \,.\, f \; ((u \; f) \; x)$</span>
+#### AST for <span>$\lambda ufx \,.\, f \; ((u \; f) \; x)$</span>
 
 <div class="lambda-tree" id="tree2">
   <script>
@@ -255,11 +255,11 @@ variable (which will always be a leaf node). Here are some examples:
   </script>
 </div>
 
-### Try it for yourself
+#### Try it for yourself
 
 {% include lambda-editor.md %}
 
-# Semantics of $\lambda$-Calculus
+## Semantics of $\lambda$-Calculus
 
 The semantics tells us how to evaluate an expression to a value. For the
 $\lambda$-calculus the only things we have are functions, so expressions
@@ -306,7 +306,7 @@ $f \; 0$, we look up $f$ in the environment to get the closure and
 evaluate the closure’s function using the closure’s environment, *not*
 the current environment.
 
-# Encoding Higher-Level Abstractions
+## Encoding Higher-Level Abstractions
 
 The $\lambda$-calculus is elegant in its simplicity, but it isn’t very
 convenient for actual programming. We can get around this by showing how
@@ -345,7 +345,7 @@ and $e_3$ if it's on the right side. We'll also assume that the
 language has builtin functions on numbers and booleans $+, -, \times,
 \div, =, <, \land, \lor, \neg$.
 
-## Arithmetic
+### Arithmetic
 
 We can encode the natural numbers using $\lambda$-calculus in a number
 of ways, but here is a very simple way that lends itself to defining
@@ -396,7 +396,7 @@ arithmetic to work because of the way that we have encoded numbers as
 functions. We could encode subtraction, division, integers, and more
 in a similar way.
 
-## Booleans
+### Booleans
 
 Booleans are simple to encode:
 
@@ -423,7 +423,7 @@ $$
 \end{aligned}
 $$
 
-## Pairs
+### Pairs
 
 So far we’ve encoded primitive values (numbers and booleans) and
 operations on those primitive values. Now we’ll show how to encode data
@@ -450,7 +450,7 @@ two arguments and returns the second. Thus, $\kw{fst}$ will return the first
 value given to $\kw{pair}$ while $\kw{snd}$ will return the second value given
 to $\kw{pair}$.
 
-## Unions
+### Unions
 
 The second data structure we'll encode is unions of two values. A
 union is a value that is tagged as being either a *left* value
@@ -496,7 +496,7 @@ union is a “left” value then $\kw{case}$ will return the result of evaluatin
 $e_2$ on the union’s value, and if the union is a “right” value then $\kw{case}$
 will return the result of evaluating $e_3$ on the union’s value
 
-## Example Expressions
+### Example Expressions
 
 -   $(\lam{x+x}) \; ((\lam[y]{y+1}) \; 6)$
 

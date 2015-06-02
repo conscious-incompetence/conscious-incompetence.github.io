@@ -41,6 +41,17 @@
 .post-content {
   @extend .col-md-12;
 
+  h2 {
+    font-weight: bold;
+    margin-top: 2 * $spacing-unit;
+  }
+
+  h3 {
+    margin-top: $spacing-unit;
+    color: $gray-darker;
+    border-bottom: 1px solid $gray-lighter;
+  }
+
   aside {
     @extend .col-md-4;
     @extend .pull-right;
