@@ -16,13 +16,9 @@
     }
 }
 
-
-
 // Import partials from `sass_dir` (defaults to `_sass`)
 @import "variables";
 @import "bootstrap";
 @import "common";
-//@import "base";
 @import "layout";
-@import "styles";
-@import "syntax-highlighting";
+@import "style";

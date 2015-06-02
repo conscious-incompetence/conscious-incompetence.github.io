@@ -1,3 +1,6 @@
+@import "syntax-highlighting";
+@import "lambda-trees";
+
 .referenceNumber, .footnote, .reversefootnote {
   color: #cc3333;
   text-decoration: none;
@@ -11,4 +14,11 @@
 
 .footnote {
   font-size: small;
+}
+
+.site-title {
+    &,
+    &:visited {
+        color: $grey-color-dark;
+    }
 }
