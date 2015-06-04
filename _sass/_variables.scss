@@ -4,19 +4,21 @@
   Fonts
 *******************************************************************************/
 @import url("https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic");
-@import url("https://fonts.googleapis.com/css?family=Bitter:400,700,400italic'");
 
-$font-size-base: 17px;
+$font-size-base: 20px;
 
 $font-family-serif:       "Lora", $font-family-serif;
-$font-family-sans-serif:  "Bitter", $font-family-sans-serif;
 
-$headings-font-family: $font-family-serif;
+$font-family-base:     $font-family-serif;
+$headings-font-family: $font-family-sans-serif;
+
+$line-height-base: 30px;
 
 /*******************************************************************************
   Colors
 *******************************************************************************/
-$background-color: #fdfdfd;
+$text-color:       #4c4c4c;
+$body-bg:          #fdfdfd;
 $brand-color:      #2a7ae2;
 
 $aside-color: black;
