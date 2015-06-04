@@ -39,7 +39,7 @@
 }
 
 .post-content {
-  @extend .col-md-12;
+  @extend .col-md-9;
 
   h2 {
     font-weight: bold;
@@ -53,13 +53,19 @@
   }
 
   aside {
-    @extend .col-md-4;
-    @extend .pull-right;
     @extend .well;
+    float: right;
+    position: absolute;
+    right: -25%;
+
+    font-size: small;
+    line-height: 1.5em;
+    width: 23%;
 
     color: $aside-color;
     background-color: $aside-background;
-    padding: 15px 10px;
+    padding: 10px 10px;
+    margin: 0;
     margin-left: 15px;
 
     h3, h4 {
