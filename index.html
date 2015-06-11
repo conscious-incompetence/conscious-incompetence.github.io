@@ -4,17 +4,22 @@ layout: home
 
 <div class="home">
 
-  <h1 class="page-heading">Posts</h1>
-
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-      </li>
-    {% endfor %}
+{% for category in site.categories %}
+  <ul class="category">
+    <li class="category-heading">
+      {{ category[0] | capitalize }}
+      <span class="category-count">{{ category[1] | size }}</span>
+    </li>
+    <ul class="post-list">
+      {% for post in category[1] %}
+        <li>
+            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+            <span class="post-meta"> {{ post.author }} &middot; {{ post.date | date: "%b %-d, %Y" }} </span>
+        </li>
+      {% endfor %}
+    </ul>
   </ul>
+{% endfor %}
 
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
 

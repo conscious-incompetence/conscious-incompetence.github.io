@@ -2,12 +2,7 @@
  * Lists
  */
 .clean-lists {
-    list-style: none;
-    padding: 0;
-
-    li {
-      padding: 0;
-    }
+  @extend .list-unstyled;
 }
 
 @mixin clean-lists {
@@ -32,7 +27,7 @@ table.booktabs {
     border-bottom: 1px solid black;
   }
 
-  tfoot {
+  tfoot, tbody {
     border-top: 1px solid black;
     border-bottom: 2px solid black;
   }

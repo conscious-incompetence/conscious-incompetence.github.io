@@ -14,7 +14,7 @@
     margin-left: 0;
     list-style: none;
 
-    > li {
+    > li:not(:last-child) {
         margin-bottom: $spacing-unit;
     }
 }
@@ -26,7 +26,40 @@
 
 .post-link {
     display: block;
-    font-size: 24px;
+    font-size: 22px;
+    line-height: .5em;
+}
+
+/*******************************************************************************
+  Home page
+*******************************************************************************/
+.home {
+    @include clean-lists;
+
+    ul.category {
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
+
+        @extend .panel;
+        @extend .panel-default;
+
+        .category-heading {
+            @extend .panel-heading;
+            font-weight: bold;
+        }
+
+        .category-count {
+            @extend .badge;
+            @extend .pull-right;
+        }
+
+        ul.post-list {
+            margin: 15px;
+            margin-top: 20px;
+        }
+    }
+
 }
 
 /*******************************************************************************

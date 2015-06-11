@@ -3,6 +3,8 @@ layout: post
 author: "Ben Hardekopf"
 title:  "Lambda Calculus"
 date:   2015-05-20 22:12:31
+categories: "foundations"
+tags: "programming_languages theory history"
 ---
 
 {% include macros.html %}
