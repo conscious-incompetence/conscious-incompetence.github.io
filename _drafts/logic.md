@@ -15,11 +15,11 @@ ___
 
 The word __logic__ comes from the Greek _logos_, which can be
 translated as _reason_. Logic as a discipline is about studying the
-fundamental principles of how to correctly reason. Logic is about
-making valid _arguments_ (in the sense of making a case for something,
-not an acrimonious dispute). In other words, logic tells us given
-certain assumptions what conclusions one can reasonably
-infer. Consider the following example (adapted from The Simpsons):
+fundamental principles of how to reason correctly, i.e., making valid
+_arguments_ (in the sense of making a case for something, not an
+acrimonious dispute). In other words, logic tells us, given certain
+assumptions, what conclusions one can reasonably infer. Consider the
+following example (adapted from The Simpsons):
 
 > __Lisa:__ By your logic I could claim that this rock keeps tigers away.  
 > __Homer:__ Oh, how does it work?  
@@ -42,8 +42,8 @@ logic), and many others.
 {{ %endaside }}
 
 Clearly (and unsurprisingly) Homer is not reasoning correctly. Logic
-can tell us exactly why his reasoning is incorrect and why Lisa is so
-exasperated with him.
+can tell us exactly why his reasoning is incorrect and thus why Lisa
+is so exasperated with him.
 
 An important principle of formal logic is __form over content__. That
 is, the rules of logic are about the form that an argument takes, not
@@ -80,40 +80,36 @@ ___
 
 Logic is not one single thing; there are many different systems of
 logic with different applications. These systems fall into different
-categories such as:
-
-- __Propositional logics__
-- __Predicate logics__
-- __Modal logics__
-- _et cetera_<br/><br/>
-
-Examples of predicate logics include classical _first-order logic_,
-_second-order logic_, _many-sorted logic_, and _infinitary
-logic_. Examples of modal logics include _temporal logic_, _alethic
-logic_, _deontic logic_, and _doxastic logic_. There are many other
-logical systems that have been developed. For all logical systems
-there are three desirable properties (though not all logical systems
-will have all three):
+categories such as __propositional logics__, __predicate logics__,
+__modal logics__, etc. Examples of predicate logics include
+_first-order logic_, _higher-order logic_, _many-sorted logic_, and
+_infinitary logic_. Examples of modal logics include _temporal logic_
+(logics of time), _alethic logic_ (logics of possibility and
+necessity), _deontic logic_ (logics of obligation and permission), and
+_doxastic logic_ (logics of belief). There are many other logical
+systems that have been developed. For all logical systems there are
+three desirable properties, though not all logical systems will have
+all three:
 
 - __Consistency__
 
   The system cannot be used to prove things that contradict each
-  other, i.e., a consistent system cannot be used to prove that A is
-  true _and_ that A is not true, for any A.
+  other, i.e., a consistent system cannot be used to prove for any
+  proposition A that A is true _and_ that A is not true.
   
 - __Soundness__
 
-  If the system can be used to prove something, then
-  that thing is true. In other words, only true things can be proven.
+  If the system can be used to prove a proposition A, then A is
+  true. In other words, only true things can be proven.
   
 - __Completeness__
 
-  If something is true, then the system can be used
-  to prove it. In other words, all true things can be proven.<br/><br/>
+  If proposition A is true, then the system can be used to prove A. In
+  other words, all true things can be proven.<br/><br/>
 
 Consistency and soundness are generally taken as required in order to
 have a sensible logical system; when a system cannot have all three it
-is usually completeness that is dropped.
+is completeness that is dropped.
 
 ## Logical Interpretations
 ___
@@ -188,44 +184,49 @@ the concepts. Take the following sentence in first-order logic:
 
 Here _x_ is a variable, _p_ is a predicate, _f_ is a binary function
 (i.e., a function taking two arguments), and _g_ is a nullary function
-(i.e., a function taking no arguments, also called a constant). The
+(i.e., a function taking no arguments, also called a _constant_). The
 $\forall$ symbol is saying that the variable _x_ ranges over all
 elements of the domain of discourse. If these concepts are not
 familiar to you, take a look at the page on [first-order logic](???)
 where they will be explained in more detail and then come back. An
 interpretation will take all of the predicates and functions in a
 formula and map them to relations and functions over the given domain
-of discourse. Here are some examples:
+of discourse, as in the following examples:
 
-- __Interpretation 1__
 
-  We will set the domain of discourse to be people. We will map the
-  predicate _p_ to the relation between people `descendant-of`, the
-  function _f_ to the function on people `least-common-ancestor` (it
-  returns the most closely related person who is an ancestor of both
-  people given as arguments), and the constant _g_ to the person
-  `mary`. Then in this interpretation, _x_ is ranging over the domain
-  of people and the above formula is saying "for all people _x_, _x_
-  is a descendant of the least common ancestor of _x_ and `mary`". For
-  convenience, we will assume that everyone has a common ancestor with
-  `mary`.
+<br/><br/>
 
-- __Interpretation 2__
+#### __Interpretation 1__
 
-  We will set the domain of discourse to be integers. We will map the
-  predicate _p_ to the relation between numbers < (less than), the
-  function _f_ to the function on numbers + (addition), and the
-  constant _g_ to the number 1. Then in this interpretation, _x_ is
-  ranging over the domain of integers and the above formula is saying
-  "for all numbers _x_, _x_ is less than _x_ + 1".
+We will set the domain of discourse to be people. We will map the
+predicate _p_ to the relation between people `descendant-of`, the
+function _f_ to the function on people `least-common-ancestor` (it
+returns the most closely related person who is an ancestor of both
+people given as arguments), and the constant _g_ to the person
+`mary`. Then in this interpretation, _x_ is ranging over the domain of
+people and the above formula is saying "for all people _x_, _x_ is a
+descendant of the least common ancestor of _x_ and `mary`".
 
-- __Interpretation 3__
+<br/><br/>
 
-  We can have multiple interpretations for the same domain. Again set
-  the domain of discourse to be integers. We will map the predicate
-  _p_ to the relation between numbers > (greater than), the function
-  _f_ to the function on numbers − (subtraction), and the constant _g_
-  to the number 1. Then in this interpretation, _x_ is ranging over
-  the domain of integers and the above formula is saying "for all
-  numbers _x_, _x_ is greater than _x_ − 1".
+#### __Interpretation 2__
+
+We will set the domain of discourse to be integers. We will map the
+predicate _p_ to the relation between numbers < (less than), the
+function _f_ to the function on numbers + (addition), and the constant
+_g_ to the number 1. Then in this interpretation, _x_ is ranging over
+the domain of integers and the above formula is saying "for all
+numbers _x_, _x_ is less than _x_ + 1".
+
+<br/><br/>
+
+#### __Interpretation 3__
+
+We can have multiple interpretations for the same domain. Again set
+the domain of discourse to be integers. We will map the predicate _p_
+to the relation between numbers > (greater than), the function _f_ to
+the function on numbers − (subtraction), and the constant _g_ to the
+number 1. Then in this interpretation, _x_ is ranging over the domain
+of integers and the above formula is saying "for all numbers _x_, _x_
+is greater than _x_ − 1".
 
