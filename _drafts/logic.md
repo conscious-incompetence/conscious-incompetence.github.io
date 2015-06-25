@@ -193,40 +193,33 @@ interpretation will take all of the predicates and functions in a
 formula and map them to relations and functions over the given domain
 of discourse, as in the following examples:
 
+> #### __Interpretation 1__
+>
+> We will set the domain of discourse to be people. We will map the
+>predicate _p_ to the relation between people `descendant-of`, the
+>function _f_ to the function on people `least-common-ancestor` (it
+>returns the most closely related person who is an ancestor of both
+>people given as arguments), and the constant _g_ to the person
+>`mary`. Then in this interpretation, _x_ is ranging over the domain
+>of people and the above formula is saying "for all people _x_, _x_ is
+>a descendant of the least common ancestor of _x_ and `mary`".
 
-<br/><br/>
+> #### __Interpretation 2__
+>
+> We will set the domain of discourse to be integers. We will map the
+> predicate _p_ to the relation between numbers < (less than), the
+> function _f_ to the function on numbers + (addition), and the
+> constant _g_ to the number 1. Then in this interpretation, _x_ is
+> ranging over the domain of integers and the above formula is saying
+> "for all numbers _x_, _x_ is less than _x_ + 1".
 
-#### __Interpretation 1__
-
-We will set the domain of discourse to be people. We will map the
-predicate _p_ to the relation between people `descendant-of`, the
-function _f_ to the function on people `least-common-ancestor` (it
-returns the most closely related person who is an ancestor of both
-people given as arguments), and the constant _g_ to the person
-`mary`. Then in this interpretation, _x_ is ranging over the domain of
-people and the above formula is saying "for all people _x_, _x_ is a
-descendant of the least common ancestor of _x_ and `mary`".
-
-<br/><br/>
-
-#### __Interpretation 2__
-
-We will set the domain of discourse to be integers. We will map the
-predicate _p_ to the relation between numbers < (less than), the
-function _f_ to the function on numbers + (addition), and the constant
-_g_ to the number 1. Then in this interpretation, _x_ is ranging over
-the domain of integers and the above formula is saying "for all
-numbers _x_, _x_ is less than _x_ + 1".
-
-<br/><br/>
-
-#### __Interpretation 3__
-
-We can have multiple interpretations for the same domain. Again set
-the domain of discourse to be integers. We will map the predicate _p_
-to the relation between numbers > (greater than), the function _f_ to
-the function on numbers − (subtraction), and the constant _g_ to the
-number 1. Then in this interpretation, _x_ is ranging over the domain
-of integers and the above formula is saying "for all numbers _x_, _x_
-is greater than _x_ − 1".
+> #### __Interpretation 3__
+>
+> We can have multiple interpretations for the same domain. Again set
+> the domain of discourse to be integers. We will map the predicate
+> _p_ to the relation between numbers > (greater than), the function
+> _f_ to the function on numbers − (subtraction), and the constant _g_
+> to the number 1. Then in this interpretation, _x_ is ranging over
+> the domain of integers and the above formula is saying "for all
+> numbers _x_, _x_ is greater than _x_ − 1".
 
