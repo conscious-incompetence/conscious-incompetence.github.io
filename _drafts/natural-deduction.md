@@ -5,6 +5,14 @@ title:  "Natural Deduction"
 date:   2015-06-27
 ---
 
+<!--
+    ISSUES:
+
+    - put introduction and elimination rules into columns
+    - provide names for inference rules in the proper place
+    - figure out derivation trees
+-->
+
 {% include macros.html %}
 {% include variables.md %}
 
@@ -110,12 +118,136 @@ how we can judge that a proposition using that connective is true
 connective has an _elimination rule_ that shows how we can judge that
 a proposition is true based on knowing some other proposition using
 that connective is true (i.e., the connective is used in one of the
-premise judgements). Note that the rules below usually don't specify
-or use the contents of $\Gamma$ or $\Delta$; they are there only to
-make clear that the rules are valid no matter what assumptions we
-make, as long as the assumptions are consistent.
+premise judgements). The rules below mention assumptions $\Gamma$, but
+they don't specify or use the contents of $\Gamma$; it there only to
+make clear that the rules are valid no matter what assumptions we are
+making.
 
-> __TBD__
+### Conjunction ($\land$)
+
+- __Introduction Rule__ $\land\text{I}$
+
+$$
+\begin{gather}
+\Gamma \vdash A \qquad \Gamma \vdash B
+\\ \hline
+\Gamma \vdash A \land B
+\end{gather}
+$$
+
+- __Elimination Rules__ $\land\text{E}_1$, $\land\text{E}_2$
+
+$$
+\begin{gather}
+\Gamma \vdash A \land B
+\\ \hline
+\Gamma \vdash A
+\end{gather}
+$$
+
+$$
+\begin{gather}
+\Gamma \vdash A \land B
+\\ \hline
+\Gamma \vdash B
+\end{gather}
+$$
+
+### Disjunction ($\lor$)
+
+- __Introduction Rules__ $\lor\text{I}_1$, $\lor\text{I}_2$
+
+$$
+\begin{gather}
+\Gamma \vdash A
+\\ \hline
+\Gamma \vdash A \lor B
+\end{gather}
+$$
+
+$$
+\begin{gather}
+\Gamma \vdash B
+\\ \hline
+\Gamma \vdash A \lor B
+\end{gather}
+$$
+
+- __Elimination Rule__ $\lor\text{E}$
+
+$$
+\begin{gather}
+\Gamma \vdash A \lor B \qquad \Gamma,A \vdash C \qquad \Gamma,B \vdash C
+\\ \hline
+\Gamma \vdash C
+\end{gather}
+$$
+
+### Implication ($\implies$)
+
+- __Introduction Rule__ $$\implies\!\!\text{I}$$
+
+$$
+\begin{gather}
+\Gamma,A \vdash B
+\\ \hline
+\Gamma \vdash A \implies B
+\end{gather}
+$$
+
+- __Elimination Rule__ $$\implies\!\!\text{E}$$
+
+$$
+\begin{gather}
+\Gamma \vdash A \implies B \qquad \Gamma \vdash A
+\\ \hline
+\Gamma \vdash B
+\end{gather}
+$$
+
+### Universal Quantification ($\forall$)
+
+- __Introduction Rule__ $\forall\text{I}$
+
+$$
+\begin{gather}
+\Gamma \vdash A[x \mapsto k] \qquad k\text{ fresh}
+\\ \hline
+\Gamma \vdash \forall x . A
+\end{gather}
+$$
+
+- __Elimination Rule__ $\forall\text{E}$
+
+$$
+\begin{gather}
+\Gamma \vdash \forall x . A
+\\ \hline
+\Gamma \vdash A[x \mapsto t]
+\end{gather}
+$$
+
+### Existential Quantification ($\exists$)
+
+- __Introduction Rule__ $\exists\text{I}$
+
+$$
+\begin{gather}
+\Gamma \vdash A[x \mapsto t]
+\\ \hline
+\Gamma \vdash \exists x . A
+\end{gather}
+$$
+
+- __Elimination Rule__ $\exists\text{E}$
+
+$$
+\begin{gather}
+\Gamma \vdash \exists x . A \qquad \Gamma,A[x \mapsto k] \vdash B \qquad k\text{ fresh}
+\\ \hline
+\Gamma \vdash B
+\end{gather}
+$$
 
 ## Derivation Trees
 
