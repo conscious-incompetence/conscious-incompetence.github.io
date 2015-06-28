@@ -11,7 +11,6 @@ date:   2015-06-22
 {:toc}
 
 ## What is Logic?
-___
 
 The word __logic__ comes from the Greek _logos_, which can be
 translated as _reason_. Logic as a discipline is about studying the
@@ -38,7 +37,6 @@ rhetoric formed the foundations of a medieval liberal arts
 education. Modern logic started taking shape in the mid 1800s due to
 people like George Boole (boolean algebra), Gottlob Frege (predicate
 logic), and many others.
-
 {{ %endaside }}
 
 Clearly (and unsurprisingly) Homer is not reasoning correctly. Logic
@@ -76,7 +74,6 @@ their subject matter might be. We don't need separate logics for
 studying, e.g., arguments about mortality versus arguments about math.
 
 ## Logical Systems
-___
 
 Logic is not one single thing; there are many different systems of
 logic with different applications. These systems fall into different
@@ -112,7 +109,6 @@ have a sensible logical system; when a system cannot have all three it
 is completeness that is dropped.
 
 ## Logical Interpretations
-___
 
 The study of logic is about form, not content. However, we do need
 some way to connect the abstract logical sentences with meaningful
@@ -174,7 +170,7 @@ particular domain of discourse, what specific interpretation satisfies
 the formula?". Finding a satisfying interpretation for a formula is a
 form of computation.
 
-### Domain and Interpretation Examples
+### More Interpretation Examples
 
 The notions of "domain of discourse" and "interpretation" may be a
 little difficult to comprehend. Here are some examples to illustrate
@@ -223,3 +219,6 @@ of discourse, as in the following examples:
 > the domain of integers and the above formula is saying "for all
 > numbers _x_, _x_ is greater than _x_ − 1".
 
+## Exercises
+
+> __TBD__
