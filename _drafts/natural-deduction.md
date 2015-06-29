@@ -104,9 +104,12 @@ statements. They consist of a horizontal line with zero or more
 judgements on top of the line, called _premises_, and exactly one
 judgement on the bottom of the line, called the _conclusion_. An
 inference rule is saying that _if_ all of the premises can be proven
-true, _then_ the conclusion must also be true. Each inference rule
-will also have a name, given immediately to the right of the
-horizontal line.
+true, _then_ the conclusion must also be true.
+
+<!--%% not until we figure out how to do this
+    Each inference rule will also have a name, given immediately to
+    the right of the horizontal line.
+-->
 
 For each logical connective $\land, \lor, \implies, \forall, \exists$
 there are rules that tell us how we can use them to make
@@ -122,6 +125,12 @@ premise judgements). The rules below mention assumptions $\Gamma$, but
 they don't specify or use the contents of $\Gamma$; it there only to
 make clear that the rules are valid no matter what assumptions we are
 making.
+
+If you are having trouble understanding the rules, refer back to the
+informal description of these operators in the page on
+[first-order logic](???). Having a conceptual understanding of what
+the connectives mean should help in understanding the formal
+definitions below.
 
 ### Conjunction ($\land$)
 
@@ -153,6 +162,30 @@ $$
 \end{gather}
 $$
 
+The introduction rule $\land\text{I}$ states that if we know $A$ is
+true under some set of assumptions $\Gamma$ and we know $B$ is true
+under the same set of assumptions $\Gamma$, then we can also conclude
+$A \land B$ is true under that same set of assumptions. There are two
+elimination rules; they state that if we know $A \land B$ is true
+under some set of assumptions $\Gamma$ then we can conclude both that
+$A$ is true (using the first rule $\land\text{E}_1$) and that $B$ is
+true (using the second rule $\land\text{E}_2$) under the same set of
+assumptions $\Gamma$. Constantly mentioning the assumptions $\Gamma$
+is tedious, so we'll often ignore them in the explanations below, but
+for all of the inference rules the assumptions used in the premises
+and conclusions must match up for the rule to be used.
+
+Notice how the introduction and elimination rules are duals of each
+other. The introduction rule takes two pieces of information (the
+truth of $A$ and $B$) and packages them up into a single piece of
+information (the truth of $A \land B$). The elimination rules take a
+single piece of information (the truth of $A \land B$) and extract
+from it two pieces of information (the truth of $A$ and the truth of
+$B$). There is a principle of _conservation of information_ here:
+information is neither lost nor destroyed when using the introduction
+and elimination rules. A similar observation will hold for all of the
+other connectives.
+
 ### Disjunction ($\lor$)
 
 - __Introduction Rules__ $\lor\text{I}_1$, $\lor\text{I}_2$
@@ -183,6 +216,25 @@ $$
 \end{gather}
 $$
 
+The introduction rules state that if we know $A$ is true then we can
+conclude that $A \lor B$ is true (using the first rule
+$$\lor\text{I}_1$$) and that if we know $B$ is true then we can also
+conclude $A \lor B$ is true (using the second rule
+$$\lor\text{I}_2$$). Notice that we conclude the same thing in either
+case; thus simply knowing $A \lor B$ is true does not give us any
+information about _which_ of $A$ or $B$ was true.
+
+The elimination rule $\lor\text{E}$ shows how to use the fact $A \lor
+B$ is true without knowing which one of $A$ or $B$ was actually
+true. The first premise states that we know $A \lor B$. The second
+premise states that if we _assume_ $A$ is true, we can infer some new
+proposition $C$. The third premise states that if we _assume_ $B$ is
+true, we can infer that same new proposition $C$. The elimination
+rule, then, states that if we know $A \lor B$ is true, and we know
+that if $A$ is true then $C$ is true and also that if $B$ is true then
+$C$ is true, then we can safely conclude $C$ is true without knowing
+_which_ of $A$ or $B$ was actually true.
+
 ### Implication ($\implies$)
 
 - __Introduction Rule__ $$\implies\!\!\text{I}$$
@@ -204,6 +256,12 @@ $$
 \Gamma \vdash B
 \end{gather}
 $$
+
+The introduction rule states that if by assuming $A$ is true we can
+infer $B$ is true, then we can conclude that $A \implies B$ is
+true. The elimination rule states that if we know $A \implies B$ is
+true and we can infer $A$ is true, then we can conclude that $B$ is
+true.
 
 ### Universal Quantification ($\forall$)
 
@@ -227,6 +285,31 @@ $$
 \end{gather}
 $$
 
+We assume that proposition $A$ mentions variable _x_, otherwise we can
+trivially remove the quantification and leave $A$ by itself. The
+notation '$A[x \mapsto k]$' means to return a new version of $A$ such
+that all mentions of variable _x_ are replaced by $k$, e.g., $f(x)
+\land g(x) [x \mapsto h]$ would result in $f(h) \land g(h)$. The term
+_fresh_ means that the constant $k$ has never been used anywhere in
+the current proof, so this is the first time in the current proof that
+$k$ has been mentioned.
+
+The introduction rule states that if we can infer $A[x \mapsto k]$ is
+true for some fresh (i.e., never-seen-before) constant $k$, then we
+can conclude that $\forall x . A$ is true. The reasoning behind this
+rule is that if $k$ is a fresh constant that we've never seen before,
+then we know nothing about it, which means that it could represent any
+object in the domain of discourse. If we can prove that
+$A[x \mapsto k]$ is true, and $k$ can represent any object in the
+domain, then $A$ must be true no matter what domain object we
+substitute for _x_. Therefore, $A$ must be true for _all_ objects in
+the domain, which is represented as $\forall x. A$.
+
+The elimination rule states that if $\forall x . A$ is true, then we
+can conclude $A[x \mapsto t]$ is true for any arbitrary term
+$t$. Recall that terms specify objects in the domain of discourse; if
+$A$ is true for all objects, then it is true for any one object.
+
 ### Existential Quantification ($\exists$)
 
 - __Introduction Rule__ $\exists\text{I}$
@@ -248,6 +331,25 @@ $$
 \Gamma \vdash B
 \end{gather}
 $$
+
+Again we assume that $A$ mentions variable _x_. The introduction rule
+states that if we know $A[x \mapsto t]$ is true for some term $t$,
+then we can conclude that $\exists x . A$ is true. The reasoning is
+that we have shown $t$ makes $A$ true, and thus we have demonstrated
+that there is at least one object in the domain of discourse that
+makes $A$ true.
+
+The elimination rule states that if $\exists x . A$ is true and, by
+assuming $A[x \mapsto k]$ for some fresh constant $k$ we can infer
+that $B$ is true, then we can conclude that $B$ is true. The reasoning
+is similar to that of the disjunction elimination rule&mdash;we know
+that there is _some_ object that makes $A$ true, but we don't know
+_which_ object. Therefore we select a fresh constant $k$ that can
+represent _any_ object (as discussed in the introduction rule for
+universal quantification $\forall\text{I}$), assume $A$ is true for
+that object, and attempt to infer $B$. If we are successful, then we
+know that it doesn't matter which object satisfies $A$, we can safely
+conclude $B$.
 
 ## Derivation Trees
 

@@ -1,8 +1,8 @@
 ---
 layout: post
 author: "Ben Hardekopf"
-title:  "Natural Deduction"
-date:   2015-06-27
+title:  "Substructural Logic"
+date:   2015-06-28
 ---
 
 {% include macros.html %}
