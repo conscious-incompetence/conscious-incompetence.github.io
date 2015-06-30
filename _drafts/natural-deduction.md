@@ -78,9 +78,9 @@ For classical first-order logic there are two axioms, i.e., judgements
 that we accept as true without further evidence:
 
 
-- $\Gamma,A,\Delta \vdash A$, i.e., we always know that under the
-  assumption that $A$ is true, we can conclude that $A$ is true. The
-  notation '$\Gamma,A,\Delta$' means that there may be other
+- $\Gamma,A,\Delta \vdash A$, i.e., the _identity axiom_. It is always
+  true that if we assume $A$ is true, we can conclude that $A$ is
+  true. The notation '$\Gamma,A,\Delta$' means that there may be other
   assumptions besides just $A$.
 
 - $\Gamma \vdash A \lor \neg A$, i.e., the _law of the excluded
