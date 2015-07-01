@@ -1,0 +1,32 @@
+.derivation {
+  @include clean-lists;
+
+  width: auto;
+  margin: auto;
+
+  text-align: center;
+
+  .name {
+    font-size: small;
+    float: right;
+  }
+
+  .name:before {
+    content: "["
+  }
+
+  .name:after {
+    content: "]"
+  }
+
+  ul.premises {
+    @extend .list-inline;    
+    li {
+
+    }
+  }
+
+  ul.conclusions {
+    border-top: 1px solid black;
+  }
+}
