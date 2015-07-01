@@ -4,7 +4,9 @@ layout: home
 
 <div class="home">
 
-{% for category in site.categories %}
+{% assign categories = site.categories | sort %}
+
+{% for category in categories %}
   <ul class="category">
     <li class="category-heading">
       {{ category[0] | capitalize }}
