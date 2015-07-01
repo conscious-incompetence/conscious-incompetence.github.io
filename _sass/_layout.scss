@@ -36,27 +36,28 @@
 .home {
     @include clean-lists;
 
-    ul.category {
-        width: 40%;
-        margin-left: auto;
-        margin-right: auto;
+    ul.categories {
+        @extend .row;
 
-        @extend .panel;
-        @extend .panel-default;
+        .category {
+            @extend .col-sm-4;
+            @extend .col-lg-4;
+            @extend .col-md-4;
 
-        .category-heading {
-            @extend .panel-heading;
-            font-weight: bold;
-        }
+            .category-heading {
+                @extend .panel-heading;
+                font-weight: bold;
+            }
 
-        .category-count {
-            @extend .badge;
-            @extend .pull-right;
-        }
+            .category-count {
+                @extend .badge;
+                @extend .pull-right;
+            }
 
-        ul.post-list {
-            margin: 15px;
-            margin-top: 20px;
+            ul.post-list {
+                margin: 15px;
+                margin-top: 20px;
+            }
         }
     }
 
