@@ -3,6 +3,7 @@ layout: post
 author: "Ben Hardekopf"
 title:  "Introduction to Logic"
 date:   2015-06-22
+categories: "logic"
 ---
 
 {% include variables.md %}

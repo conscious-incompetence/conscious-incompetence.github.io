@@ -3,6 +3,7 @@ layout: post
 author: "Ben Hardekopf"
 title:  "Substructural Logic"
 date:   2015-06-28
+categories: "logic"
 ---
 
 {% include macros.html %}

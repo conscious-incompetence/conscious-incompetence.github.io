@@ -3,6 +3,7 @@ layout: post
 author: "Ben Hardekopf"
 title:  "Natural Deduction"
 date:   2015-06-27
+categories: "logic"
 ---
 
 <!--

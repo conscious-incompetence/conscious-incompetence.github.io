@@ -3,6 +3,7 @@ layout: post
 author: "Ben Hardekopf"
 title:  "Linear Logic"
 date:   2015-06-29
+categories: "logic"
 ---
 
 {% include macros.html %}

@@ -3,6 +3,7 @@ layout: post
 author: "Ben Hardekopf"
 title:  "First-Order Predicate Logic"
 date:   2015-06-25
+categories: "logic"
 ---
 
 {% include macros.html %}
