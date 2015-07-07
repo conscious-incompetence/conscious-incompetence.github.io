@@ -23,3 +23,8 @@
         color: $gray-dark;
     }
 }
+
+// spacing around lists
+ul, ol, dl {
+  margin: 1em 0;
+}
