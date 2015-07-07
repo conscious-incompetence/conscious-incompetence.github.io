@@ -14,27 +14,64 @@ categories: "logic"
     - figure out derivation trees
 -->
 
+
+{% include macros.html %}
+{% include variables.md %}
+
+
+### Conjunction ($\land$)
+
+{{ %two_column }}
+
+#### __Introduction Rule__ 
+
+<div class="derivation" markdown="1">
+  
+</div>
+
+$$
+\begin{gather}
+\Gamma \vdash A \qquad \Gamma \vdash B
+\\ \hline
+\Gamma \vdash A \land B
+\end{gather}
+$$
+
+{{ %column_break }}
+
+#### __Elimination Rules__ $\land\text{E}_1$, $\land\text{E}_2$
+
+$$
+\begin{gather}
+\Gamma \vdash A \land B
+\\ \hline
+\Gamma \vdash A
+\end{gather}
+$$
+
+$$
+\begin{gather}
+\Gamma \vdash A \land B
+\\ \hline
+\Gamma \vdash B
+\end{gather}
+$$
+
+{{ %end_two_column }}
+
 ## Heading
 
 <div class="derivation">
-  <div class="infrule" name="Modus Ponens">
+  <div class="infrule">
+  <div class="name">$\land\text{I}$</div>
 
     <ul class="premises">
-      <li>
-        <div class="infrule">
-          <ul class="premises">
-            <li>sub 1</li>
-          </ul>
-          <ul class="conclusions">
-            <li>Premise 1</li>
-          </ul>
-        </div>
-      </li>
-      <li>Premise 2</li>
+      <li>$\Gamma \vdash A$</li>
+      <li>$\Gamma \vdash B$</li>
     </ul>
 
     <ul class="conclusions">
-      <li>Conclusion</li>
+      <li>$\Gamma \vdash A \land B$</li>
     </ul>
 
   </div>

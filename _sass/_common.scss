@@ -74,6 +74,11 @@ table {
   .left, .right {
     @extend .col-md-6;
     @extend .equal-column;
+    padding: 20px;
   }  
+
+  .right {
+    border-left: 1px dashed $gray-light;
+  }
 
 }
