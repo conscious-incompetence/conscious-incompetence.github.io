@@ -134,7 +134,9 @@ definitions below.
 
 ### Conjunction ($\land$)
 
-- __Introduction Rule__ $\land\text{I}$
+{{ %two_column }}
+
+#### __Introduction Rule__ $\land\text{I}$
 
 $$
 \begin{gather}
@@ -144,7 +146,9 @@ $$
 \end{gather}
 $$
 
-- __Elimination Rules__ $\land\text{E}_1$, $\land\text{E}_2$
+{{ %column_break }}
+
+#### __Elimination Rules__ $\land\text{E}_1$, $\land\text{E}_2$
 
 $$
 \begin{gather}
@@ -161,6 +165,8 @@ $$
 \Gamma \vdash B
 \end{gather}
 $$
+
+{{ %end_two_column }}
 
 The introduction rule $\land\text{I}$ states that if we know $A$ is
 true under some set of assumptions $\Gamma$ and we know $B$ is true
