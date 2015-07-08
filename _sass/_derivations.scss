@@ -1,15 +1,33 @@
 .derivation {
   @include clean-lists;
+  margin: 25px 0;
+
+  //display: inline-block;
 
   .infrule {
-    display: inline-block;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: row;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: stretch;
   }
-
-  text-align: center;
 
   .name {
     font-size: small;
-    float: right;
+    order: 2;
+    align-self: flex-end;
+    top: -1.5em;
+    position: relative;
+    padding-left: 5px;
+  }
+
+  .logic {
+    display: flex;
+    flex-direction: column;
+    order: 1;
+
+    text-align: center;
   }
 
   .name:before {
@@ -20,16 +38,17 @@
     content: "]"
   }
 
-  ul.premises {
-    margin: 0;
+  ul.premise, ul.conclusion {
     @extend .list-inline;
-    li {
+    margin: 0;
 
+    li {
+      padding-left: 15px;
     }
   }
 
-  ul.conclusions {
-    margin: 0;
+  
+  ul.conclusion {
     border-top: 1px solid black;
   }
 }

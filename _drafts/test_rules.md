@@ -6,103 +6,110 @@ date:   2015-06-27
 categories: "logic"
 ---
 
-<!--
-    ISSUES:
-
-    - put introduction and elimination rules into columns
-    - provide names for inference rules in the proper place
-    - figure out derivation trees
--->
-
-
 {% include macros.html %}
 {% include variables.md %}
 
-
-### Conjunction ($\land$)
+## Conjunction ($\land$)
 
 {{ %two_column }}
 
-#### __Introduction Rule__ 
+#### __Introduction Rule__
 
-<div class="derivation" markdown="1">
+<div class="derivation">
   
-</div>
+  <div class="infrule">
+    <div class="name">$\land\text{I}$</div>
 
-$$
-\begin{gather}
-\Gamma \vdash A \qquad \Gamma \vdash B
-\\ \hline
-\Gamma \vdash A \land B
-\end{gather}
-$$
+    <div class="logic">
+      <ul class="premise">
+        <li>$\Gamma \vdash A$</li>
+        <li>$\Gamma \vdash B$</li>
+      </ul>
+
+      <ul class="conclusion">
+        <li>$\Gamma \vdash A \land B$</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
 
 {{ %column_break }}
 
-#### __Elimination Rules__ $\land\text{E}_1$, $\land\text{E}_2$
+#### __Elimination Rules__
 
-$$
-\begin{gather}
-\Gamma \vdash A \land B
-\\ \hline
-\Gamma \vdash A
-\end{gather}
-$$
+<div class="derivation">
+  
+  <div class="infrule">
+    <div class="name">$\land\text{E}_1$</div>
 
-$$
-\begin{gather}
-\Gamma \vdash A \land B
-\\ \hline
-\Gamma \vdash B
-\end{gather}
-$$
+    <div class="logic">
+      <ul class="premise">
+        <li>$\Gamma \vdash A \land B$</li>
+      </ul>
+
+      <ul class="conclusion">
+        <li>$\Gamma \vdash A$</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="derivation">
+  
+  <div class="infrule">
+    <div class="name">$\land\text{E}_2$</div>
+
+    <div class="logic">
+      <ul class="premise">
+        <li>$\Gamma \vdash A \land B$</li>
+      </ul>
+
+      <ul class="conclusion">
+        <li>$\Gamma \vdash B$</li>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
 
 {{ %end_two_column }}
 
-## Heading
+## Derivation trees
 
 <div class="derivation">
+  
   <div class="infrule">
-  <div class="name">$\land\text{I}$</div>
+    <div class="name">$\land\text{E}_2$</div>
 
-    <ul class="premises">
-      <li>$\Gamma \vdash A$</li>
-      <li>$\Gamma \vdash B$</li>
-    </ul>
+    <div class="logic">
+      <ul class="premise">
+        <li><div class="infrule">
+          <div class="name">$\land\text{I}$</div>
 
-    <ul class="conclusions">
-      <li>$\Gamma \vdash A \land B$</li>
-    </ul>
+          <div class="logic">
+            <ul class="premise">
+              <li>$\Gamma \vdash A$</li>
+              <li>$\Gamma \vdash B$</li>
+            </ul>
+
+            <ul class="conclusion">
+              <li>$\Gamma \vdash A \land B$</li>
+            </ul>
+          </div>
+
+        </div></li>
+      </ul>
+
+      <ul class="conclusion">
+        <li>$\Gamma \vdash B$</li>
+      </ul>
+    </div>
 
   </div>
-</div>
 
-With markdown
-
-<div class="derivation" markdown="1">
-   + 
-      + $\sigma[x] \leftarrow 1$
-      {: .premises}
-   
-      + $\sigma$
-      {: conclusions}
-
-   + 2
-   {: .premises}
-
-   + 3
-   + 4
-   {: .conclusions}
-</div>
-
-Trying another way
-
-<div class="derivation" markdown="1">
-   + $\Gamma \vdash A \lor B$
-   + $\Gamma,A \vdash C$
-   + $\Gamma,B \vdash C$
-   {: .premises}
-
-   + $\Gamma \vdash C$
-   {: .conclusions}
 </div>
