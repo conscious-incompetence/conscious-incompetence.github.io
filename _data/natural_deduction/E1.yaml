@@ -1,0 +1,6 @@
+rule:
+  name: '$\land\text{E}_1$'
+  conclusion: 
+    - '$\Gamma \vdash A$'
+  premise:    
+    - '$\Gamma \vdash A \land B$'

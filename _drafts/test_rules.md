@@ -15,107 +15,17 @@ categories: "logic"
 
 #### __Introduction Rule__
 
-<div class="derivation">
-  
-  <div class="infrule">
-    <div class="name">$\land\text{I}$</div>
-
-    <div class="logic">
-      <ul class="premise">
-        <li>$\Gamma \vdash A$</li>
-        <li>$\Gamma \vdash B$</li>
-      </ul>
-
-      <ul class="conclusion">
-        <li>$\Gamma \vdash A \land B$</li>
-      </ul>
-    </div>
-
-  </div>
-
-</div>
+{% include derivation.html data=site.data.natural_deduction.I %}
 
 {{ %column_break }}
 
 #### __Elimination Rules__
 
-<div class="derivation">
-  
-  <div class="infrule">
-    <div class="name">$\land\text{E}_1$</div>
-
-    <div class="logic">
-      <ul class="premise">
-        <li>$\Gamma \vdash A \land B$</li>
-      </ul>
-
-      <ul class="conclusion">
-        <li>$\Gamma \vdash A$</li>
-      </ul>
-    </div>
-
-  </div>
-
-</div>
-
-<div class="derivation">
-  
-  <div class="infrule">
-    <div class="name">$\land\text{E}_2$</div>
-
-    <div class="logic">
-      <ul class="premise">
-        <li>$\Gamma \vdash A \land B$</li>
-      </ul>
-
-      <ul class="conclusion">
-        <li>$\Gamma \vdash B$</li>
-      </ul>
-    </div>
-
-  </div>
-
-</div>
+{% include derivation.html data=site.data.natural_deduction.E1 %}
+{% include derivation.html data=site.data.natural_deduction.E2 %}
 
 {{ %end_two_column }}
 
 ## Derivation trees
 
-<div class="derivation">
-  
-  <div class="infrule">
-    <div class="name">$\land\text{E}_2$</div>
-
-    <div class="logic">
-      <ul class="premise">
-        <li><div class="infrule">
-          <div class="name">$\land\text{I}$</div>
-
-          <div class="logic">
-            <ul class="premise">
-              <li>$\Gamma \vdash A$</li>
-              <li>$\Gamma \vdash B$</li>
-            </ul>
-
-            <ul class="conclusion">
-              <li>$\Gamma \vdash A \land B$</li>
-            </ul>
-          </div>
-
-        </div></li>
-      </ul>
-
-      <ul class="conclusion">
-        <li>$\Gamma \vdash B$</li>
-      </ul>
-    </div>
-
-  </div>
-
-</div>
-
-## Testing usage
-
-<div class="derivation">
-  {% include infrule.html name = "$\land\text{E}_2$" premises = "$\Gamma \vdash A \land B$" conclusions = "$\Gamma \vdash A$" %}
-</div>
+{% include derivation.html data=site.data.natural_deduction.proof1 %}

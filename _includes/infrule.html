@@ -1,17 +1,26 @@
+{% assign rule = include.data.rule %}
+
 <div class="infrule">
-  {% if include.name %}
-    <div class="name">{{ include.name }}</div>
+  {% if rule.name %}
+    <div class="name">{{ rule.name }}</div>
   {% endif %}
 
   <div class="logic">
     <ul class="premise">
-      {% for premise in include.premises %}
-        <li>{{ premise }}</li>  
+      {% for premise in rule.premise %}
+          {% if rule.premise[0].rule %}
+            {% assign newRule = rule.premise[0] %}
+            {% assign oldRule = rule %}
+            {% include infrule.html data=newRule %}
+            {% assign rule = oldRule %}
+          {% else %}
+            <li>{{ premise }}</li>  
+          {% endif %}
       {% endfor %}
     </ul>
 
     <ul class="conclusion">
-      {% for conclusion in include.conclusions %}
+      {% for conclusion in rule.conclusion %}
         <li>{{ conclusion }}</li>  
       {% endfor %}
     </ul>

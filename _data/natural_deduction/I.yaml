@@ -1,0 +1,7 @@
+rule:
+  name: '$\land\text{I}$'
+  conclusion: 
+    - '$\Gamma \vdash A \land B$'
+  premise:    
+    - '$\Gamma \vdash A$'
+    - '$\Gamma \vdash B$'
