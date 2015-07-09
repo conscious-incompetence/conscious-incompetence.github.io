@@ -66,6 +66,7 @@ table {
 
 .two-column {
   @extend .container-fluid;
+  text-align: center;
 
   .row {
     @extend .equal-row;
