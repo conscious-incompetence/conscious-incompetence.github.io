@@ -1,0 +1,20 @@
+<div class="infrule">
+  {% if include.name %}
+    <div class="name">{{ include.name }}</div>
+  {% endif %}
+
+  <div class="logic">
+    <ul class="premise">
+      {% for premise in include.premises %}
+        <li>{{ premise }}</li>  
+      {% endfor %}
+    </ul>
+
+    <ul class="conclusion">
+      {% for conclusion in include.conclusions %}
+        <li>{{ conclusion }}</li>  
+      {% endfor %}
+    </ul>
+  </div>
+
+</div>

@@ -113,3 +113,9 @@ categories: "logic"
   </div>
 
 </div>
+
+## Testing usage
+
+<div class="derivation">
+  {% include infrule.html name = "$\land\text{E}_2$" premises = "$\Gamma \vdash A \land B$" conclusions = "$\Gamma \vdash A$" %}
+</div>
